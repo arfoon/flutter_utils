@@ -3,7 +3,7 @@ import 'package:flutter_utils/src/utils.dart';
 extension AppThemeExtension on ThemeData {
   TextTheme textThemeOf(Color? color) {
     double i = 0; //Locales.selectedLocaleRtl ? -2 : 0;
-    color ??= textTheme.bodyText3.color;
+    color ??= textTheme.bodySmall?.color;
     return TextTheme(
       // headline1: TextStyle(
       //   fontSize: 32 + i,

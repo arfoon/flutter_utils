@@ -22,7 +22,7 @@ class AppTooltip extends StatelessWidget {
       waitDuration: const Duration(milliseconds: 800),
       triggerMode: TooltipTriggerMode.manual,
       richMessage: TextSpan(
-        style: context.theme.whiteTextTheme.caption2,
+        style: context.theme.whiteTextTheme.labelMedium,
         locale: Locales.currentLocale(context),
         children: [
           TextSpan(

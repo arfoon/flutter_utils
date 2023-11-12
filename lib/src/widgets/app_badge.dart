@@ -80,7 +80,7 @@ class AppBadge extends StatelessWidget {
   AppText _buildText(BuildContext context, Color color) {
     return AppText(
       text.toString(),
-      style: (style ?? context.theme.textThemeOf(color).caption2).copyWith(
+      style: (style ?? context.theme.textThemeOf(color).labelMedium)?.copyWith(
         color: textColor ?? (filled ? Colors.white : color),
       ),
       maxLines: maxLines ?? 1,
