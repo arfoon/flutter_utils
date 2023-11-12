@@ -18,9 +18,9 @@ class AppThemeData {
   TextTheme newTextThemeOf(Color color, {double i = 0}) {
     return TextTheme(
       //Label 10
-      labelSmall: TextStyle(fontSize: 10 + i, fontWeight: FontWeight.normal),
-      labelMedium: TextStyle(fontSize: 10 + i, fontWeight: FontWeight.w600),
-      labelLarge: TextStyle(fontSize: 10 + i, fontWeight: FontWeight.bold),
+      labelSmall: TextStyle(fontSize: 11 + i, fontWeight: FontWeight.normal),
+      labelMedium: TextStyle(fontSize: 11 + i, fontWeight: FontWeight.w600),
+      labelLarge: TextStyle(fontSize: 11 + i, fontWeight: FontWeight.bold),
       //Body : 18
       bodySmall: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.normal),
       bodyMedium: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.w600),
