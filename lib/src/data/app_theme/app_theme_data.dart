@@ -4,6 +4,7 @@ class AppThemeData {
   final ThemeColors colors;
   final String fontFamily;
   final String? localFontFamily;
+  final bool isExactSystem;
 
   String get localFont => localFontFamily ?? fontFamily;
 
@@ -11,9 +12,10 @@ class AppThemeData {
     required this.colors,
     required this.fontFamily,
     this.localFontFamily,
+    this.isExactSystem = false,
   });
 
-  TextTheme newTT(Color color, {double i = 0}) {
+  TextTheme newTextThemeOf(Color color, {double i = 0}) {
     return TextTheme(
       //Label 10
       labelSmall: TextStyle(fontSize: 10 + i, fontWeight: FontWeight.normal),
@@ -46,7 +48,7 @@ class AppThemeData {
   TextTheme textThemeOf(Color? color) {
     double i = 0; //Locales.selectedLocaleRtl ? -2 : 0;
     color ??= colors.text;
-    return newTT(color);
+    if (!isExactSystem) return newTextThemeOf(color);
     return TextTheme(
       // headline1: TextStyle(
       //   fontSize: 32 + i,
