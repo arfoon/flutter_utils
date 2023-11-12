@@ -22,22 +22,21 @@ class AppThemeData {
       labelMedium: TextStyle(fontSize: 10 + i, fontWeight: FontWeight.w600),
       labelLarge: TextStyle(fontSize: 10 + i, fontWeight: FontWeight.bold),
       //Body : 18
-      bodySmall: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.normal),
-      bodyMedium: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.w600),
-      bodyLarge: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.bold),
+      bodySmall: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.normal),
+      bodyMedium: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.w600),
+      bodyLarge: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.bold),
       //Title : 24
-      titleSmall: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.normal),
-      titleMedium: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.w600),
-      titleLarge:
-          const TextStyle(fontSize: 24, height: 1, fontWeight: FontWeight.bold),
+      titleSmall: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.normal),
+      titleMedium: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.w600),
+      titleLarge: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.bold),
       //Headline 28
-      headlineSmall: TextStyle(fontSize: 28 + i, fontWeight: FontWeight.normal),
-      headlineMedium: TextStyle(fontSize: 28 + i, fontWeight: FontWeight.w600),
-      headlineLarge: TextStyle(fontSize: 28 + i, fontWeight: FontWeight.bold),
+      headlineSmall: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.normal),
+      headlineMedium: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.w600),
+      headlineLarge: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.bold),
       //Display 36
-      displaySmall: TextStyle(fontSize: 25 + i, fontWeight: FontWeight.normal),
-      displayMedium: TextStyle(fontSize: 35 + i, fontWeight: FontWeight.w600),
-      displayLarge: TextStyle(fontSize: 35 + i, fontWeight: FontWeight.bold),
+      displaySmall: TextStyle(fontSize: 32 + i, fontWeight: FontWeight.normal),
+      displayMedium: TextStyle(fontSize: 32 + i, fontWeight: FontWeight.w600),
+      displayLarge: TextStyle(fontSize: 32 + i, fontWeight: FontWeight.bold),
     ).apply(
       decorationColor: color,
       bodyColor: color,
