@@ -1,9 +1,10 @@
 import '../../utils.dart';
 
 class AppTheme extends StatelessWidget {
-  static AppThemeData of(BuildContext context) =>
-      RepositoryProvider.of<AppThemeData>(context)
-          .copyWith(isDarkMode: context.isDarkMode);
+  static AppThemeData of(BuildContext context) {
+    return RepositoryProvider.of<AppThemeData>(context)
+        .copyWith(isDarkMode: ThemeCubit.isDarkMode(context));
+  }
 
   const AppTheme({
     Key? key,

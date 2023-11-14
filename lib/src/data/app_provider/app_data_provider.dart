@@ -1,21 +1,32 @@
+import 'package:flutter_utils/src/data/app_theme/theme_cubit.dart';
+
 import '../../utils.dart';
 
 class AppDataProvider extends StatelessWidget {
   const AppDataProvider({
     Key? key,
     required this.appData,
-    required this.child,
+    required this.builder,
   }) : super(key: key);
   final AppData appData;
-  final Widget child;
+  final Widget Function(ThemeMode mode) builder;
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => appData,
-      child: AppTheme(
-        data: appData.theme,
-        child: child,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
+      ],
+      child: RepositoryProvider(
+        create: (context) => appData,
+        child: AppTheme(
+          data: appData.theme,
+          child: BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, mode) {
+              return builder(mode);
+            },
+          ),
+        ),
       ),
     );
   }
