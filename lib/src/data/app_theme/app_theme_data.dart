@@ -1,5 +1,3 @@
-import 'package:flutter/scheduler.dart';
-
 import '../../utils.dart';
 
 class AppThemeData {
@@ -8,19 +6,7 @@ class AppThemeData {
   final String fontFamily;
   final String? localFontFamily;
   final bool isExactSystem;
-
-  String get localFont => localFontFamily ?? fontFamily;
-
-  ThemeColors get colors =>
-      darkMode ? (darkColors ?? lightColors) : lightColors;
-
-  bool get darkMode {
-    if (darkColors == null) return false;
-    var brightness =
-        SchedulerBinding.instance.platformDispatcher.platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
-    return isDarkMode;
-  }
+  final bool isDarkMode;
 
   AppThemeData({
     required this.lightColors,
@@ -28,7 +14,13 @@ class AppThemeData {
     required this.fontFamily,
     this.localFontFamily,
     this.isExactSystem = false,
+    this.isDarkMode = false,
   });
+
+  String get localFont => localFontFamily ?? fontFamily;
+  bool get darkMode => isDarkMode && darkColors != null;
+  ThemeColors get colors =>
+      darkMode ? (darkColors ?? lightColors) : lightColors;
 
   TextTheme newTextThemeOf(Color color, {double i = 0}) {
     return TextTheme(
@@ -305,4 +297,22 @@ class AppThemeData {
       Border.all(color: colors.background, width: width);
 
   TextTheme get whiteTextTheme => textThemeOf(Colors.white);
+
+  AppThemeData copyWith({
+    ThemeColors? lightColors,
+    ThemeColors? darkColors,
+    String? fontFamily,
+    String? localFontFamily,
+    bool? isExactSystem,
+    bool? isDarkMode,
+  }) {
+    return AppThemeData(
+      lightColors: lightColors ?? this.lightColors,
+      darkColors: darkColors ?? this.darkColors,
+      fontFamily: fontFamily ?? this.fontFamily,
+      localFontFamily: localFontFamily ?? this.localFontFamily,
+      isExactSystem: isExactSystem ?? this.isExactSystem,
+      isDarkMode: isDarkMode ?? this.isDarkMode,
+    );
+  }
 }
