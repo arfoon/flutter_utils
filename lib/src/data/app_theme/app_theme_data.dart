@@ -1,15 +1,30 @@
+import 'package:flutter/scheduler.dart';
+
 import '../../utils.dart';
 
 class AppThemeData {
-  final ThemeColors colors;
+  final ThemeColors lightColors;
+  final ThemeColors? darkColors;
   final String fontFamily;
   final String? localFontFamily;
   final bool isExactSystem;
 
   String get localFont => localFontFamily ?? fontFamily;
 
+  ThemeColors get colors =>
+      darkMode ? (darkColors ?? lightColors) : lightColors;
+
+  bool get darkMode {
+    if (darkColors == null) return false;
+    var brightness =
+        SchedulerBinding.instance.platformDispatcher.platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+    return isDarkMode;
+  }
+
   AppThemeData({
-    required this.colors,
+    required this.lightColors,
+    required this.darkColors,
     required this.fontFamily,
     this.localFontFamily,
     this.isExactSystem = false,
@@ -156,9 +171,11 @@ class AppThemeData {
 
   ThemeData themeData({
     required ThemeColors colors,
-    Brightness? brightness,
+    bool light = true,
+    Iterable<ThemeExtension<dynamic>>? extensions,
   }) {
     return ThemeData(
+      extensions: extensions,
       visualDensity: VisualDensity.comfortable,
       fontFamily: fontFamily,
       primarySwatch: colors.primarySwatch ?? Colors.teal,
@@ -167,7 +184,7 @@ class AppThemeData {
       primaryColorLight: colors.primaryLight,
       backgroundColor: colors.background,
       colorScheme: ColorScheme.light(
-        brightness: brightness ?? Brightness.light,
+        brightness: light ? Brightness.light : Brightness.dark,
         primary: colors.primary,
         // onPrimary: primaryColor,
         secondary: colors.secondary ?? colors.primaryLight,
@@ -190,14 +207,15 @@ class AppThemeData {
         color: colors.background,
         elevation: .0,
         centerTitle: false,
-        titleTextStyle: textThemeOf(colors.text).subtitle2,
-        toolbarTextStyle: textThemeOf(colors.text).subtitle2,
+        titleTextStyle: textThemeOf(colors.text).titleSmall,
+        toolbarTextStyle: textThemeOf(colors.text).titleMedium,
         iconTheme: IconThemeData(color: colors.primary),
         systemOverlayStyle: SystemUiOverlayStyle(
-          systemNavigationBarIconBrightness:
-              kIsAndroid ? Brightness.dark : Brightness.light,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.light,
+          systemNavigationBarIconBrightness: (kIsAndroid
+              ? (light ? Brightness.dark : Brightness.dark)
+              : (light ? Brightness.dark : Brightness.light)),
+          statusBarIconBrightness: light ? Brightness.dark : Brightness.light,
+          statusBarBrightness: light ? Brightness.light : Brightness.dark,
           statusBarColor: Colors.transparent,
         ),
       ),
@@ -219,14 +237,15 @@ class AppThemeData {
   }
 
   ThemeData get light {
-    return themeData(
-      colors: colors,
-      brightness: Brightness.light,
-    );
+    return themeData(colors: lightColors);
+  }
+
+  ThemeData get dark {
+    return themeData(colors: darkColors ?? lightColors);
   }
 
   ThemeData get material {
-    return light;
+    return darkMode ? dark : light;
   }
 
   AppBarTheme get appBarTheme => material.appBarTheme;
