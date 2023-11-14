@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class ThemeColors {
@@ -16,6 +18,8 @@ class ThemeColors {
   final Color ok;
   final Color error;
   final Color? secondary;
+  final Color? secondaryDark;
+  final Color? secondaryLight;
   final MaterialColor? primarySwatch;
 
   const ThemeColors({
@@ -34,6 +38,8 @@ class ThemeColors {
     required this.ok,
     this.primarySwatch,
     this.secondary,
+    this.secondaryDark,
+    this.secondaryLight,
     required this.error,
   });
 
@@ -57,6 +63,12 @@ class ThemeColors {
     if (secondary != null) {
       result.addAll({'secondary': secondary!.value});
     }
+    if (secondaryDark != null) {
+      result.addAll({'secondaryDark': secondaryDark!.value});
+    }
+    if (secondaryLight != null) {
+      result.addAll({'secondaryLight': secondaryLight!.value});
+    }
 
     return result;
   }
@@ -78,6 +90,57 @@ class ThemeColors {
       ok: Color(map['ok']),
       error: Color(map['error']),
       secondary: map['secondary'] != null ? Color(map['secondary']) : null,
+      secondaryDark:
+          map['secondaryDark'] != null ? Color(map['secondaryDark']) : null,
+      secondaryLight:
+          map['secondaryLight'] != null ? Color(map['secondaryLight']) : null,
     );
   }
+
+  ThemeColors copyWith({
+    Color? primary,
+    Color? primaryDark,
+    Color? primaryLight,
+    Color? background,
+    Color? surface,
+    Color? text,
+    Color? disabled,
+    Color? divider,
+    Color? disabledLight,
+    Color? negative,
+    Color? positive,
+    Color? warning,
+    Color? ok,
+    Color? error,
+    Color? secondary,
+    Color? secondaryDark,
+    Color? secondaryLight,
+    MaterialColor? primarySwatch,
+  }) {
+    return ThemeColors(
+      primary: primary ?? this.primary,
+      primaryDark: primaryDark ?? this.primaryDark,
+      primaryLight: primaryLight ?? this.primaryLight,
+      background: background ?? this.background,
+      surface: surface ?? this.surface,
+      text: text ?? this.text,
+      disabled: disabled ?? this.disabled,
+      divider: divider ?? this.divider,
+      disabledLight: disabledLight ?? this.disabledLight,
+      negative: negative ?? this.negative,
+      positive: positive ?? this.positive,
+      warning: warning ?? this.warning,
+      ok: ok ?? this.ok,
+      error: error ?? this.error,
+      secondary: secondary ?? this.secondary,
+      secondaryDark: secondaryDark ?? this.secondaryDark,
+      secondaryLight: secondaryLight ?? this.secondaryLight,
+      primarySwatch: primarySwatch ?? this.primarySwatch,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ThemeColors.fromJson(String source) =>
+      ThemeColors.fromMap(json.decode(source));
 }

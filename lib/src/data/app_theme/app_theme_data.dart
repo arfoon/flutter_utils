@@ -273,6 +273,8 @@ class AppThemeData {
   TextTheme get positiveTextTheme => textThemeOf(positiveColor);
   TextTheme positiveTextThemeIf(bool b) => textThemeOf(positiveColorIf(b));
   TextTheme get errorTextTheme => textThemeOf(colors.error);
+  TextTheme get secondaryDarkTextTheme => textThemeOf(colors.secondaryDark);
+  TextTheme get secondaryLightTextTheme => textThemeOf(colors.secondaryLight);
 
   Border disabledBorder({double width = 1}) =>
       Border.all(color: colors.disabled, width: width);
