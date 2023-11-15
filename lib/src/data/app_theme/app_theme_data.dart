@@ -52,7 +52,7 @@ class AppThemeData {
   }
 
   TextTheme textThemeOf(Color? color) {
-    double i = 0; //Locales.selectedLocaleRtl ? -2 : 0;
+    double i = 0;
     color ??= colors.text;
     if (!isExactSystem) return newTextThemeOf(color);
     return TextTheme(
@@ -199,7 +199,7 @@ class AppThemeData {
         color: colors.background,
         elevation: .0,
         centerTitle: false,
-        titleTextStyle: textThemeOf(colors.text).titleSmall,
+        titleTextStyle: textThemeOf(colors.text).titleMedium,
         toolbarTextStyle: textThemeOf(colors.text).titleMedium,
         iconTheme: IconThemeData(color: colors.primary),
         systemOverlayStyle: SystemUiOverlayStyle(
