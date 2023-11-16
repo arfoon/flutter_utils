@@ -12,3 +12,5 @@ export 'app_hijri_date_ext.dart';
 export 'file_extension.dart';
 export 'focus_extentions.dart';
 export 'text_editing_controller_extention.dart';
+
+export 'router_extensions.dart';
