@@ -66,6 +66,4 @@ extension AppStringExt on String {
   bool containsAny(String s) {
     return toLowerCase().contains(s.toLowerCase());
   }
-
-  
 }

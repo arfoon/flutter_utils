@@ -284,6 +284,7 @@ class AppThemeData {
   TextTheme get positiveTextTheme => textThemeOf(positiveColor);
   TextTheme positiveTextThemeIf(bool b) => textThemeOf(positiveColorIf(b));
   TextTheme get errorTextTheme => textThemeOf(colors.error);
+  TextTheme get secondaryTextTheme => textThemeOf(colors.secondary);
   TextTheme get secondaryDarkTextTheme => textThemeOf(colors.secondaryDark);
   TextTheme get secondaryLightTextTheme => textThemeOf(colors.secondaryLight);
 
