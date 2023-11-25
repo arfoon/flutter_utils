@@ -167,6 +167,7 @@ class AppThemeData {
     Iterable<ThemeExtension<dynamic>>? extensions,
   }) {
     return ThemeData(
+      useMaterial3: false,
       extensions: extensions,
       visualDensity: VisualDensity.comfortable,
       fontFamily: fontFamily,
