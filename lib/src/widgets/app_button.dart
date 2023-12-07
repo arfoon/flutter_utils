@@ -1,3 +1,4 @@
+
 import 'package:flutter_utils/flutter_utils.dart';
 
 class AppButton extends StatelessWidget {
@@ -71,12 +72,14 @@ class AppButton extends StatelessWidget {
 
         var textStyle = style?.copyWith(
               color: (hover || !outlined
-                  ? (textHoverColor ?? Colors.white)
+                  ? (textHoverColor ?? context.colors.background)
                   : color),
             ) ??
             (outlined
                 ? context.theme.primaryTextTheme.bodyMedium!.copyWith(
-                    color: hover ? (textHoverColor ?? Colors.white) : color)
+                    color: hover
+                        ? (textHoverColor ?? context.colors.background)
+                        : color)
                 : context.theme.whiteTextTheme.bodyMedium);
 
         if (textColor != null) {
