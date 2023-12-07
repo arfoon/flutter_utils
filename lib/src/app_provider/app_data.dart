@@ -1,4 +1,4 @@
-import '../../utils.dart';
+import 'package:flutter_utils/flutter_utils.dart';
 
 class AppData {
   static AppData of(BuildContext context) =>

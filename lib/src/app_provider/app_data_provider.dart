@@ -1,6 +1,4 @@
-import 'package:flutter_utils/src/data/app_theme/theme_cubit.dart';
-
-import '../../utils.dart';
+import 'package:flutter_utils/flutter_utils.dart';
 
 class AppDataProvider extends StatelessWidget {
   const AppDataProvider({

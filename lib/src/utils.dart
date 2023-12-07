@@ -1,16 +1,16 @@
 export 'builders/hover_builder.dart';
 
-export 'data/constants.dart';
+export 'constants.dart';
 export 'extensions/extensions.dart';
-export 'data/spaces.dart';
-export 'data/radiuses.dart';
+export 'spaces.dart';
+export 'radiuses.dart';
 
 export 'widgets/widgets.dart';
 
-export 'data/app_provider/app_data.dart';
-export 'data/app_provider/app_data_provider.dart';
+export 'app_provider/app_data.dart';
+export 'app_provider/app_data_provider.dart';
 
-export 'data/app_theme/theme.dart';
+export 'app_theme/theme.dart';
 
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
