@@ -275,6 +275,8 @@ class AppThemeData {
 
   //Colored Text Theme
   TextTheme get textTheme => textThemeOf(colors.text);
+  TextTheme get backgroundTextTheme => textThemeOf(colors.background);
+  TextTheme get surfaceTextTheme => textThemeOf(colors.surface);
   TextTheme get primaryTextTheme => textThemeOf(colors.primary);
   TextTheme get primaryDarkTextTheme => textThemeOf(colors.primaryDark);
   TextTheme get blackTextTheme => textThemeOf(colors.text);
