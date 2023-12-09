@@ -1,4 +1,3 @@
-
 import 'package:flutter_utils/flutter_utils.dart';
 
 class AppButton extends StatelessWidget {
@@ -87,13 +86,23 @@ class AppButton extends StatelessWidget {
               color: hover ? (textHoverColor ?? textColor) : textColor);
         }
 
+        final backgroundColor =
+            hover ? (color) : (outlined ? fillColor : color);
+        if (backgroundColor == textStyle?.color) {
+          if (backgroundColor == context.colors.background) {
+            textStyle = textStyle?.copyWith(color: context.theme.textColor);
+          } else if (backgroundColor == context.theme.textColor) {
+            textStyle =
+                textStyle?.copyWith(color: context.theme.backgroundColor);
+          }
+        }
         return AppCard(
           minWidth: minWidth,
           width: width,
           margin: margin,
           height: height ?? (kIsMobile ? 54 : 44),
           onPressed: !loading && onTap != null ? onTap! : null,
-          color: hover ? (color) : (outlined ? fillColor : color),
+          color: backgroundColor,
           borderRadius: Radiuses.miniCircle,
           border: hover
               ? Border.all(color: color)
