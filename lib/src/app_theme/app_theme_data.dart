@@ -300,7 +300,7 @@ class AppThemeData {
   Border backgroundBorder({double width = 1}) =>
       Border.all(color: colors.background, width: width);
 
-  TextTheme get whiteTextTheme => textThemeOf(Colors.white);
+  // TextTheme get whiteTextTheme => textThemeOf(Colors.white);
 
   AppThemeData copyWith({
     ThemeColors? lightColors,

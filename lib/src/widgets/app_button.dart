@@ -79,7 +79,7 @@ class AppButton extends StatelessWidget {
                     color: hover
                         ? (textHoverColor ?? context.colors.background)
                         : color)
-                : context.theme.whiteTextTheme.bodyMedium);
+                : context.theme.backgroundTextTheme.bodyMedium);
 
         if (textColor != null) {
           textStyle = textStyle?.copyWith(

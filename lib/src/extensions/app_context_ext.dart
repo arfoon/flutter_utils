@@ -53,7 +53,7 @@ extension AppContextExt on BuildContext {
 
     Widget content = Text(
       title,
-      style: theme.whiteTextTheme.bodyText2,
+      style: theme.backgroundTextTheme.bodyMedium,
     );
     if (subtitle != null) {
       content = Column(
@@ -64,7 +64,7 @@ extension AppContextExt on BuildContext {
           Spaces.xminiHeight,
           Text(
             subtitle,
-            style: theme.whiteTextTheme.caption,
+            style: theme.backgroundTextTheme.label,
           )
         ],
       );
