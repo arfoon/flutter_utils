@@ -7,9 +7,12 @@ class AppData {
   final Map<String, String> Function() imageHttpHeaders;
   final SvgData defaultImage;
   final AppThemeData theme;
+  final ThemeMode? initalMode;
+
   AppData({
     required this.imageHttpHeaders,
     required this.defaultImage,
     required this.theme,
+    this.initalMode,
   });
 }

@@ -13,7 +13,10 @@ class AppDataProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
+        BlocProvider<ThemeCubit>(
+            create: (_) => ThemeCubit(
+                  initalMode: appData.initalMode,
+                )),
       ],
       child: RepositoryProvider(
         create: (context) => appData,

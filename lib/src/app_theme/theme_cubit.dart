@@ -3,7 +3,7 @@ import 'package:flutter_utils/src/utils.dart';
 class ThemeCubit extends Cubit<ThemeMode> {
   static ThemeCubit of(BuildContext context) =>
       BlocProvider.of<ThemeCubit>(context);
-  ThemeCubit() : super(ThemeMode.system);
+  ThemeCubit({ThemeMode? initalMode}) : super(initalMode ?? ThemeMode.system);
 
   void toggle() {
     switch (state) {
@@ -22,5 +22,9 @@ class ThemeCubit extends Cubit<ThemeMode> {
       return context.isSystemDarkMode;
     }
     return mode == ThemeMode.dark;
+  }
+
+  void changeTo(ThemeMode themeMode) {
+    emit(themeMode);
   }
 }
