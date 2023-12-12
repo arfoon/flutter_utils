@@ -176,6 +176,7 @@ class AppThemeData {
       primaryColorDark: colors.primaryDark,
       primaryColorLight: colors.primaryLight,
       backgroundColor: colors.background,
+      cardColor: colors.surface,
       colorScheme: ColorScheme.light(
         brightness: light ? Brightness.light : Brightness.dark,
         primary: colors.primary,
