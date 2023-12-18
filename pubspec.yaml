@@ -18,7 +18,7 @@ dependencies:
   dart_utils:
     git:
       url: https://github.com/arfoon/dart_utils.git
-      ref: main # branch name
+      ref: '1' # branch name
 
 dev_dependencies:
   flutter_test:
