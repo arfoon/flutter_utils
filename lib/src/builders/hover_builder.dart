@@ -17,6 +17,7 @@ class HoverBuilder extends StatefulWidget {
 
 class _HoverBuilderState extends State<HoverBuilder> {
   bool hover = false;
+  
   @override
   Widget build(BuildContext context) {
     if (widget.orHover) return widget.builder(true);
