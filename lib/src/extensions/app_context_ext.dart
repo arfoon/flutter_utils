@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_utils/flutter_utils.dart';
 
 extension AppContextExt on BuildContext {
   //For Platform Dependent sizing
-  bool get isMobile => kIsMobile;
-  bool get isDesktop => kIsDesktop;
+  bool get isMobile => kIsMobile || (kDebugMode && kIsDesktop && width < 500);
+  bool get isDesktop => kIsDesktop && !isMobile;
 
   double heightDot(double percentage) => height / 100 * percentage;
   double widthDot(double percentage) => width / 100 * percentage;
