@@ -6,6 +6,7 @@ class SvgIcon extends StatelessWidget {
   final bool useDefaultColor;
   final Color? color;
   final double size;
+  final double? width, height;
   final int? rotate;
   final Function? onTap;
   final bool disabled;
@@ -23,14 +24,16 @@ class SvgIcon extends StatelessWidget {
     this.disabled = false,
     this.padding,
     this.margin,
+    this.width,
+    this.height,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget icon = SvgPicture.asset(
       svg.path,
-      width: size,
-      height: size,
+      width: width ?? size,
+      height: height ?? size,
       color: color ?? IconTheme.of(context).color,
     );
 
@@ -47,8 +50,8 @@ class SvgIcon extends StatelessWidget {
 
     return ExcludeFocus(
       child: Container(
-        width: size,
-        height: size,
+        width: width ?? size,
+        height: height ?? size,
         padding: padding,
         margin: margin,
         child: Center(child: icon),
