@@ -17,4 +17,20 @@ class AppData {
     required this.closeIcon,
     this.initalMode,
   });
+
+  AppData copyWith({
+    Map<String, String> Function()? imageHttpHeaders,
+    SvgData? defaultImage,
+    SvgData? closeIcon,
+    AppThemeData? theme,
+    ThemeMode? initalMode,
+  }) {
+    return AppData(
+      imageHttpHeaders: imageHttpHeaders ?? this.imageHttpHeaders,
+      defaultImage: defaultImage ?? this.defaultImage,
+      closeIcon: closeIcon ?? this.closeIcon,
+      theme: theme ?? this.theme,
+      initalMode: initalMode ?? this.initalMode,
+    );
+  }
 }
