@@ -71,7 +71,7 @@ class AppCheckbox extends StatelessWidget {
                 when: expandedText,
                 child: DefaultTextStyle(
                   style:
-                      context.theme.textThemeOf(textColor ?? color).bodyText2!,
+                      context.theme.textThemeOf(textColor ?? color).bodyMedium!,
                   child: text!,
                 ),
               ),

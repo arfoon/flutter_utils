@@ -67,7 +67,7 @@ class AppMenu extends StatelessWidget {
             child: action.child ??
                 Text(
                   action.text,
-                  style: context.theme.textTheme.bodyText2,
+                  style: context.theme.textTheme.bodyMedium,
                 ),
           );
         }),

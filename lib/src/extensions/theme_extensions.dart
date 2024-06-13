@@ -129,7 +129,7 @@ extension AppThemeExtension on ThemeData {
       primaryColor: primaryColor,
       primaryColorDark: primaryColorDark,
       primaryColorLight: primaryLightColor,
-      backgroundColor: backgroundColor,
+      dialogBackgroundColor: backgroundColor,
       colorScheme: ColorScheme.light(
         brightness: brightness,
         primary: primaryColor,
@@ -154,8 +154,8 @@ extension AppThemeExtension on ThemeData {
         color: backgroundColor,
         elevation: .0,
         centerTitle: false,
-        titleTextStyle: textThemeOf(textColor).subtitle2,
-        toolbarTextStyle: textThemeOf(textColor).subtitle2,
+        titleTextStyle: textThemeOf(textColor).titleMedium,
+        toolbarTextStyle: textThemeOf(textColor).titleMedium,
         iconTheme: IconThemeData(color: primaryColor),
         systemOverlayStyle: SystemUiOverlayStyle(
           systemNavigationBarIconBrightness:
@@ -189,7 +189,7 @@ extension AppThemeExtension on ThemeData {
   Border border({double width = 1, Color? color}) =>
       Border.all(color: color ?? primaryColor, width: width);
   Border backgroundBorder({double width = 1}) =>
-      Border.all(color: backgroundColor, width: width);
+      Border.all(color: dialogBackgroundColor, width: width);
 
   TextTheme get whiteTextTheme => textThemeOf(Colors.white);
   TextTheme get blackTextTheme => textThemeOf(Colors.black);
