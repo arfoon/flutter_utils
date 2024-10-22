@@ -9,6 +9,7 @@ class AppData {
   final SvgData closeIcon;
   final AppThemeData theme;
   final ThemeMode? initalMode;
+  final String? assetsPath;
 
   AppData({
     required this.imageHttpHeaders,
@@ -16,6 +17,7 @@ class AppData {
     required this.theme,
     required this.closeIcon,
     this.initalMode,
+    this.assetsPath,
   });
 
   AppData copyWith({
@@ -24,6 +26,7 @@ class AppData {
     SvgData? closeIcon,
     AppThemeData? theme,
     ThemeMode? initalMode,
+    String? assetsPath,
   }) {
     return AppData(
       imageHttpHeaders: imageHttpHeaders ?? this.imageHttpHeaders,
@@ -31,6 +34,13 @@ class AppData {
       closeIcon: closeIcon ?? this.closeIcon,
       theme: theme ?? this.theme,
       initalMode: initalMode ?? this.initalMode,
+      assetsPath: assetsPath ?? this.assetsPath,
     );
+  }
+}
+
+extension AssetPathExt on String {
+  String assetPath(BuildContext context) {
+    return (AppData.of(context).assetsPath ?? '') + this;
   }
 }

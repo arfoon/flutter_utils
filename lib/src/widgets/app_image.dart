@@ -49,7 +49,7 @@ class AppImage extends StatelessWidget {
       );
     } else if (path != null) {
       child = Image.file(
-        File(path!),
+        File(path!.assetPath(context)),
         fit: fit,
         errorBuilder: (context, obj, stock) =>
             emptyWidget ?? _buildEmpty(context),

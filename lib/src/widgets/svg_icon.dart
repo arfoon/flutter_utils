@@ -31,7 +31,7 @@ class SvgIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget icon = SvgPicture.asset(
-      svg.path,
+      svg.path.assetPath(context),
       width: width ?? size,
       height: height ?? size,
       color: color ?? IconTheme.of(context).color,
