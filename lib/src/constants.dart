@@ -1,9 +1,13 @@
 import 'dart:io';
 
-bool kIsIos = Platform.isIOS;
-bool kIsMacOs = Platform.isMacOS;
-bool kIsWindows = Platform.isWindows;
-bool kIsAndroid = Platform.isAndroid;
+import 'package:flutter/foundation.dart';
+
+// export 'package:flutter/foundation.dart' show kIsWeb;
+
+bool kIsIos = !kIsWeb && Platform.isIOS;
+bool kIsMacOs = !kIsWeb && Platform.isMacOS;
+bool kIsWindows = !kIsWeb && Platform.isWindows;
+bool get kIsAndroid => !kIsWeb && Platform.isAndroid;
 bool kIsMobile = Platform.isAndroid || Platform.isIOS;
-bool kIsDesktop = Platform.isWindows || Platform.isMacOS;
+bool kIsDesktop = kIsWeb || Platform.isWindows || Platform.isMacOS;
 bool kIsIpod = false;
