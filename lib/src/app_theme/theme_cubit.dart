@@ -5,14 +5,17 @@ class ThemeCubit extends Cubit<ThemeMode> {
       BlocProvider.of<ThemeCubit>(context);
   ThemeCubit({ThemeMode? initalMode}) : super(initalMode ?? ThemeMode.system);
 
-  void toggle() {
+  ThemeMode toggle() {
     switch (state) {
       case ThemeMode.system:
         emit(ThemeMode.light);
+        return ThemeMode.light;
       case ThemeMode.light:
         emit(ThemeMode.dark);
+        return ThemeMode.dark;
       case ThemeMode.dark:
         emit(ThemeMode.system);
+        return ThemeMode.system;
     }
   }
 
