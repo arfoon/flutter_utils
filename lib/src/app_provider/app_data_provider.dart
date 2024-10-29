@@ -14,9 +14,7 @@ class AppDataProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(
-            create: (_) => ThemeCubit(
-                  initalMode: appData.initalMode,
-                )),
+            create: (_) => ThemeCubit(initalMode: appData.initalMode)),
       ],
       child: RepositoryProvider(
         create: (context) => appData,

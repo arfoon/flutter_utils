@@ -1,6 +1,14 @@
 import 'package:flutter_utils/flutter_utils.dart';
+// ignore: depend_on_referenced_packages
+import 'package:shared_preferences/shared_preferences.dart';
+
+SharedPreferences? pref;
 
 class AppData {
+  static initDefaults() async {
+    pref = await SharedPreferences.getInstance();
+  }
+
   static AppData of(BuildContext context) =>
       RepositoryProvider.of<AppData>(context);
 
