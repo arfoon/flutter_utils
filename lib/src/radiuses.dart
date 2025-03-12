@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_utils/flutter_utils.dart';
 
 class Radiuses {
   static const double large = 24;
@@ -19,16 +20,26 @@ class Radiuses {
     Radius bottom = Radius.zero,
     Radius left = Radius.zero,
     Radius right = Radius.zero,
-  }) =>
-      left != Radius.zero || right != Radius.zero
-          ? BorderRadius.horizontal(
-              left: left,
-              right: right,
-            )
-          : BorderRadius.vertical(
-              top: top,
-              bottom: bottom,
-            );
+    Radius start = Radius.zero,
+    Radius end = Radius.zero,
+  }) {
+    if (start != Radius.zero || end != Radius.zero) {
+      return BorderRadiusDirectional.horizontal(
+        start: start,
+        end: end,
+      ).resolve(
+          Locales.selectedLocaleRtl ? TextDirection.rtl : TextDirection.ltr);
+    }
+    return left != Radius.zero || right != Radius.zero
+        ? BorderRadius.horizontal(
+            left: left,
+            right: right,
+          )
+        : BorderRadius.vertical(
+            top: top,
+            bottom: bottom,
+          );
+  }
 
   static BorderRadius largeCircle = BorderRadius.circular(large);
   static BorderRadius mediumCircle = BorderRadius.circular(medium);

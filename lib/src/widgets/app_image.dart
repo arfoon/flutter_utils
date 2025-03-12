@@ -20,8 +20,10 @@ class AppImage extends StatelessWidget {
     this.margin,
     this.onTap,
     this.heroTag,
+    this.asset,
   }) : super(key: key);
   final String? url;
+  final String? asset;
   final double? width, height;
   final BoxFit fit;
   final BorderRadius? borderRadius;
@@ -49,7 +51,14 @@ class AppImage extends StatelessWidget {
       );
     } else if (path != null) {
       child = Image.file(
-        File(path!.assetPath(context)),
+        File(path!),
+        fit: fit,
+        errorBuilder: (context, obj, stock) =>
+            emptyWidget ?? _buildEmpty(context),
+      );
+    } else if (asset != null) {
+      child = Image.asset(
+        asset!.assetPath(context),
         fit: fit,
         errorBuilder: (context, obj, stock) =>
             emptyWidget ?? _buildEmpty(context),

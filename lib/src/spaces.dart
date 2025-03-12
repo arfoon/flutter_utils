@@ -44,6 +44,8 @@ class Spaces {
   static const EdgeInsets largeAll = EdgeInsets.all(large);
   static const EdgeInsets xlargeAll = EdgeInsets.all(xlarge);
 
+  static const EdgeInsets xminiHorizontal =
+      EdgeInsets.symmetric(horizontal: xmini);
   static const EdgeInsets miniHorizontal =
       EdgeInsets.symmetric(horizontal: mini);
   static const EdgeInsets tinyHorizontal =
@@ -61,8 +63,8 @@ class Spaces {
   static const EdgeInsets xlargeHorizontal =
       EdgeInsets.symmetric(horizontal: xlarge);
 
-  static const EdgeInsets miniVertical = EdgeInsets.symmetric(vertical: mini);
   static const EdgeInsets xminiVertical = EdgeInsets.symmetric(vertical: xmini);
+  static const EdgeInsets miniVertical = EdgeInsets.symmetric(vertical: mini);
   static const EdgeInsets tinyVertical = EdgeInsets.symmetric(vertical: tiny);
   static const EdgeInsets tinyMiniVertical =
       EdgeInsets.symmetric(vertical: tinyMini);
@@ -75,6 +77,7 @@ class Spaces {
   static const EdgeInsets xlargeVertical =
       EdgeInsets.symmetric(vertical: xlarge);
 
+  static const EdgeInsets xminiLeft = EdgeInsets.only(left: xmini);
   static const EdgeInsets miniLeft = EdgeInsets.only(left: mini);
   static const EdgeInsets tinyLeft = EdgeInsets.only(left: tiny);
   static const EdgeInsets tinyMiniLeft = EdgeInsets.only(left: tinyMini);
@@ -83,6 +86,7 @@ class Spaces {
   static const EdgeInsets largeLeft = EdgeInsets.only(left: large);
   static const EdgeInsets xlargeLeft = EdgeInsets.only(left: xlarge);
 
+  static const EdgeInsets xminiRight = EdgeInsets.only(right: xmini);
   static const EdgeInsets miniRight = EdgeInsets.only(right: mini);
   static const EdgeInsets tinyRight = EdgeInsets.only(right: tiny);
   static const EdgeInsets tinyMiniRight = EdgeInsets.only(right: tinyMini);
@@ -91,6 +95,7 @@ class Spaces {
   static const EdgeInsets largeRight = EdgeInsets.only(right: large);
   static const EdgeInsets xlargeRight = EdgeInsets.only(right: xlarge);
 
+  static EdgeInsets get xminiStart => Spaces.only(start: xmini);
   static EdgeInsets get miniStart => Spaces.only(start: mini);
   static EdgeInsets get tinyStart => Spaces.only(start: tiny);
   static EdgeInsets get tinyMiniStart => Spaces.only(start: tinyMini);
@@ -99,6 +104,7 @@ class Spaces {
   static EdgeInsets get largeStart => Spaces.only(start: large);
   static EdgeInsets get xlargeStart => Spaces.only(start: xlarge);
 
+  static EdgeInsets get xminiEnd => Spaces.only(end: xmini);
   static EdgeInsets get miniEnd => Spaces.only(end: mini);
   static EdgeInsets get tinyEnd => Spaces.only(end: tiny);
   static EdgeInsets get tinyMiniEnd => Spaces.only(end: tinyMini);
@@ -107,6 +113,7 @@ class Spaces {
   static EdgeInsets get largeEnd => Spaces.only(end: large);
   static EdgeInsets get xlargeEnd => Spaces.only(end: xlarge);
 
+  static const EdgeInsets xminiBottom = EdgeInsets.only(bottom: xmini);
   static const EdgeInsets miniBottom = EdgeInsets.only(bottom: mini);
   static const EdgeInsets tinyBottom = EdgeInsets.only(bottom: tiny);
   static const EdgeInsets tinyMiniBottom = EdgeInsets.only(bottom: tinyMini);
@@ -115,8 +122,8 @@ class Spaces {
   static const EdgeInsets largeBottom = EdgeInsets.only(bottom: large);
   static const EdgeInsets xlargeBottom = EdgeInsets.only(bottom: xlarge);
 
-  static const EdgeInsets miniTop = EdgeInsets.only(top: mini);
   static const EdgeInsets xminiTop = EdgeInsets.only(top: xmini);
+  static const EdgeInsets miniTop = EdgeInsets.only(top: mini);
   static const EdgeInsets tinyTop = EdgeInsets.only(top: tiny);
   static const EdgeInsets tinyMiniTop = EdgeInsets.only(top: tinyMini);
   static const EdgeInsets smallTop = EdgeInsets.only(top: small);
