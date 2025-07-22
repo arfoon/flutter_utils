@@ -37,7 +37,7 @@ extension AppContextExt on BuildContext {
   bool get hasKeyboard => keyboardHeight() != 0;
 
   bool get rtl => !ltr;
-  bool get ltr => Locales.currentLocale(this)?.languageCode == 'en';
+  bool get ltr => textDirection == TextDirection.ltr;
   bool get en => Locales.currentLocale(this)?.languageCode == 'en';
   TextDirection get textDirection => Directionality.of(this);
 
