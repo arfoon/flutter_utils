@@ -29,8 +29,11 @@ class ThemeCubit extends Cubit<ThemeMode> {
     }
   }
 
-  static bool isDarkMode(BuildContext context) {
+  static bool isDarkMode(BuildContext context, {bool remember = true}) {
     var mode = of(context).state;
+    if (remember) {
+      pref?.setInt(UtilConstants.theme, mode.index);
+    }
     if (mode == ThemeMode.system) {
       return context.isSystemDarkMode;
     }
