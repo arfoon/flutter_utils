@@ -242,7 +242,7 @@ class AppThemeData {
     return darkMode ? dark : light;
   }
 
-  AppBarTheme get appBarTheme => material.appBarTheme;
+  AppBarThemeData get appBarTheme => material.appBarTheme;
 
   Color valueColor(double value, {bool isBalance = false}) {
     if (value == 0) return light.disabledColor;
