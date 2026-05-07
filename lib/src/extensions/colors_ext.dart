@@ -21,9 +21,11 @@ extension ColorExt on Color {
 
     return hslLight.toColor();
   }
+}
 
+extension ColorUtilsExt on Color? {
   /// Returns a copy of this color with the given opacity (0.0 to 1.0).
-  Color opacity(double opacity) {
-    return withAlpha((opacity * 255).round());
+  Color? opacityOf(double opacity) {
+    return this?.withAlpha((opacity * 255).round());
   }
 }
