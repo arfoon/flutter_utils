@@ -7,6 +7,7 @@ class AppThemeData {
   final String? localFontFamily;
   final bool isExactSystem;
   final bool isDarkMode;
+  final TextSizes? textSizes;
 
   AppThemeData({
     required this.lightColors,
@@ -15,7 +16,12 @@ class AppThemeData {
     this.localFontFamily,
     this.isExactSystem = false,
     this.isDarkMode = false,
-  });
+    this.textSizes,
+  }) {
+    if (textSizes != null) {
+      TextSizes.init(textSizes);
+    }
+  }
 
   String get localFont => localFontFamily ?? fontFamily;
   bool get darkMode => isDarkMode && darkColors != null;
@@ -261,7 +267,7 @@ class AppThemeData {
   Color get disabledColor => colors.disabled;
   Color get backgroundColor => colors.background;
   Color get scaffoldBackgroundColor => material.scaffoldBackgroundColor;
-  Color get disabledLightColor => colors.disabledLight;
+  Color get disabledLightColor => colors.disabledLight ?? colors.disabled;
   Color get errorColor => colors.error;
   Color get primaryColor05 => colors.primary.withOpacity(.05);
   Color get negativeColor => colors.negative;
