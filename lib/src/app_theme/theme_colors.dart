@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class ThemeColors {
+  final ThemeMode themeMode;
+
   final Color primary;
   final Color primaryDark;
   final Color primaryLight;
@@ -107,11 +109,13 @@ class ThemeColors {
     this.errorDark,
     this.onError,
     this.onSecondary,
+    required this.themeMode,
   });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
+    result.addAll({'themeMode': themeMode.name});
     result.addAll({'primary': primary.value});
     result.addAll({'primaryDark': primaryDark.value});
     result.addAll({'primaryLight': primaryLight.value});
@@ -227,6 +231,7 @@ class ThemeColors {
 
   factory ThemeColors.fromMap(Map<String, dynamic> map) {
     return ThemeColors(
+      themeMode: ThemeMode.values.firstWhere((e) => e.name == map['themeMode']),
       primary: Color(map['primary']),
       primaryDark: Color(map['primaryDark']),
       primaryLight: Color(map['primaryLight']),
@@ -292,6 +297,7 @@ class ThemeColors {
   }
 
   ThemeColors copyWith({
+    ThemeMode? themeMode,
     Color? primary,
     Color? primaryDark,
     Color? primaryLight,
@@ -339,6 +345,7 @@ class ThemeColors {
     MaterialColor? primarySwatch,
   }) {
     return ThemeColors(
+      themeMode: themeMode ?? this.themeMode,
       primary: primary ?? this.primary,
       primaryDark: primaryDark ?? this.primaryDark,
       primaryLight: primaryLight ?? this.primaryLight,
