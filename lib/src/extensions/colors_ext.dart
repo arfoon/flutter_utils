@@ -1,6 +1,6 @@
 import '../utils.dart';
 
-extension ColorExt on Color {
+extension ColorUtilsMainExt on Color {
   String get hex => '#${value.toRadixString(16)}';
 
   Color darken([double amount = .1]) {
@@ -23,7 +23,7 @@ extension ColorExt on Color {
   }
 }
 
-extension ColorUtilsExt on Color? {
+extension ColorOpacityExt on Color? {
   /// Returns a copy of this color with the given opacity (0.0 to 1.0).
   Color? opacityOf(double opacity) {
     return this?.withAlpha((opacity * 255).round());

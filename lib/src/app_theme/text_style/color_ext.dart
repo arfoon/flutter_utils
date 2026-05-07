@@ -1,7 +1,7 @@
 import 'package:flutter_utils/flutter_utils.dart';
 import 'package:flutter_utils/src/app_theme/text_style/text_sizes.dart';
 
-extension ColorUtilsExt on Color {
+extension ColorUtilsStyleExt on Color {
   TextStyle? get overline => TextSizes.instance.overline;
   TextStyle? get caption => TextSizes.instance.caption;
   TextStyle? get label => TextSizes.instance.label;
