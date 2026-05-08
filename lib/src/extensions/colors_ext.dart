@@ -21,6 +21,14 @@ extension ColorUtilsMainExt on Color {
 
     return hslLight.toColor();
   }
+
+  Border border({double width = 1, BorderStyle? style, double? strokeAlign}) =>
+      Border.all(
+        color: this,
+        width: width,
+        style: style ?? BorderStyle.solid,
+        strokeAlign: strokeAlign ?? BorderSide.strokeAlignOutside,
+      );
 }
 
 extension ColorOpacityExt on Color? {

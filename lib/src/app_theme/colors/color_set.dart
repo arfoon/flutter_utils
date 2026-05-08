@@ -6,8 +6,6 @@ class ColorSet extends Color {
   final ColorOn? dark;
   final ColorOn? light;
 
-  ColorOn get main => ColorOn(toARGB32(), on: on);
-
   const ColorSet(
     int argb, {
     this.on,
@@ -57,7 +55,8 @@ class ColorSet extends Color {
   int get hashCode => Object.hash(toARGB32(), on, dark, light);
 
   @override
-  String toString() => 'ColorSet(argb: ${toARGB32()}, on: $on, dark: $dark, light: $light)';
+  String toString() =>
+      'ColorSet(argb: ${toARGB32()}, on: $on, dark: $dark, light: $light)';
 
   Map<String, dynamic> toJson() {
     return {
@@ -72,8 +71,12 @@ class ColorSet extends Color {
     return ColorSet(
       json['argb'] as int,
       on: json['on'] as int?,
-      dark: json['dark'] != null ? ColorOn.fromJson(json['dark'] as Map<String, dynamic>) : null,
-      light: json['light'] != null ? ColorOn.fromJson(json['light'] as Map<String, dynamic>) : null,
+      dark: json['dark'] != null
+          ? ColorOn.fromJson(json['dark'] as Map<String, dynamic>)
+          : null,
+      light: json['light'] != null
+          ? ColorOn.fromJson(json['light'] as Map<String, dynamic>)
+          : null,
     );
   }
 }
