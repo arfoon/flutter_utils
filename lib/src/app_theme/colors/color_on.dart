@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ColorOn extends Color {
   final int argb;
-  final Color? on;
+  final int? on;
   const ColorOn(this.argb, {this.on}) : super(argb);
 
   ColorOn copyWith({
     int? argb,
-    Color? on,
+    int? on,
   }) {
     return ColorOn(
       argb ?? this.argb,
@@ -19,7 +19,11 @@ class ColorOn extends Color {
     if (a == null && b == null) return null;
     return ColorOn(
       Color.lerp(a, b, t)?.toARGB32() ?? 0,
-      on: Color.lerp(a?.on, b?.on, t),
+      on: Color.lerp(
+        a?.on != null ? Color(a!.on!) : null,
+        b?.on != null ? Color(b!.on!) : null,
+        t,
+      )?.toARGB32(),
     );
   }
 

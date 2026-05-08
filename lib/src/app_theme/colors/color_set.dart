@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_utils/src/app_theme/colors/color_on.dart';
 
 class ColorSet extends Color {
-  final Color? on;
+  final int? on;
   final ColorOn? dark;
   final ColorOn? light;
 
@@ -17,7 +17,7 @@ class ColorSet extends Color {
 
   ColorSet copyWith({
     int? argb,
-    Color? on,
+    int? on,
     ColorOn? dark,
     ColorOn? light,
   }) {
@@ -33,7 +33,11 @@ class ColorSet extends Color {
     if (a == null && b == null) return null;
     return ColorSet(
       Color.lerp(a, b, t)?.toARGB32() ?? 0,
-      on: Color.lerp(a?.on, b?.on, t),
+      on: Color.lerp(
+        a?.on != null ? Color(a!.on!) : null,
+        b?.on != null ? Color(b!.on!) : null,
+        t,
+      )?.toARGB32(),
       dark: ColorOn.lerp(a?.dark, b?.dark, t),
       light: ColorOn.lerp(a?.light, b?.light, t),
     );
