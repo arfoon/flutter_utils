@@ -1,0 +1,153 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_utils/src/app_theme/colors/colors.dart';
+
+class AppColors {
+  final ThemeMode theme;
+
+  final ColorSet primary;
+  final ColorSet secondary;
+
+  final ColorSet background;
+  final ColorSet surface;
+
+  final ColorSet text;
+  final ColorSet divider;
+  final ColorSet disabled;
+
+  final ColorSet error;
+  final ColorSet negative;
+  final ColorSet positive;
+
+  final ColorSet warning;
+  final ColorSet ok;
+
+  final MaterialColor? swatch;
+
+  const AppColors({
+    required this.primary,
+    required this.background,
+    required this.surface,
+    required this.text,
+    required this.disabled,
+    required this.divider,
+    required this.secondary,
+    required this.negative,
+    required this.positive,
+    required this.warning,
+    required this.ok,
+    required this.error,
+    this.swatch,
+    required this.theme,
+  });
+
+  List<ColorSet> get list => [
+        primary,
+        secondary,
+        background,
+        surface,
+        text,
+        divider,
+        disabled,
+        error,
+        negative,
+        positive,
+        warning,
+        ok,
+      ];
+
+  AppColors copyWith({
+    ThemeMode? theme,
+    ColorSet? primary,
+    ColorSet? secondary,
+    ColorSet? background,
+    ColorSet? surface,
+    ColorSet? text,
+    ColorSet? divider,
+    ColorSet? disabled,
+    ColorSet? error,
+    ColorSet? negative,
+    ColorSet? positive,
+    ColorSet? warning,
+    ColorSet? ok,
+    MaterialColor? swatch,
+  }) {
+    return AppColors(
+      theme: theme ?? this.theme,
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      background: background ?? this.background,
+      surface: surface ?? this.surface,
+      text: text ?? this.text,
+      divider: divider ?? this.divider,
+      disabled: disabled ?? this.disabled,
+      error: error ?? this.error,
+      negative: negative ?? this.negative,
+      positive: positive ?? this.positive,
+      warning: warning ?? this.warning,
+      ok: ok ?? this.ok,
+      swatch: swatch ?? this.swatch,
+    );
+  }
+
+  static AppColors lerp(AppColors a, AppColors b, double t) {
+    return AppColors(
+      theme: t < 0.5 ? a.theme : b.theme,
+      primary: ColorSet.lerp(a.primary, b.primary, t)!,
+      secondary: ColorSet.lerp(a.secondary, b.secondary, t)!,
+      background: ColorSet.lerp(a.background, b.background, t)!,
+      surface: ColorSet.lerp(a.surface, b.surface, t)!,
+      text: ColorSet.lerp(a.text, b.text, t)!,
+      divider: ColorSet.lerp(a.divider, b.divider, t)!,
+      disabled: ColorSet.lerp(a.disabled, b.disabled, t)!,
+      error: ColorSet.lerp(a.error, b.error, t)!,
+      negative: ColorSet.lerp(a.negative, b.negative, t)!,
+      positive: ColorSet.lerp(a.positive, b.positive, t)!,
+      warning: ColorSet.lerp(a.warning, b.warning, t)!,
+      ok: ColorSet.lerp(a.ok, b.ok, t)!,
+      swatch: t < 0.5 ? a.swatch : b.swatch,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AppColors) return false;
+    return theme == other.theme &&
+        primary == other.primary &&
+        secondary == other.secondary &&
+        background == other.background &&
+        surface == other.surface &&
+        text == other.text &&
+        divider == other.divider &&
+        disabled == other.disabled &&
+        error == other.error &&
+        negative == other.negative &&
+        positive == other.positive &&
+        warning == other.warning &&
+        ok == other.ok &&
+        swatch == other.swatch;
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+        theme,
+        primary,
+        secondary,
+        background,
+        surface,
+        text,
+        divider,
+        disabled,
+        error,
+        negative,
+        positive,
+        warning,
+        ok,
+        swatch,
+      ]);
+
+  @override
+  String toString() {
+    return 'AppColors(theme: $theme, primary: $primary, secondary: $secondary, ...)';
+  }
+}

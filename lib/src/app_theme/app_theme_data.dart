@@ -1,8 +1,8 @@
 import 'package:flutter_utils/flutter_utils.dart';
 
 class AppThemeData {
-  final ThemeColors lightColors;
-  final ThemeColors? darkColors;
+  final AppColors lightColors;
+  final AppColors? darkColors;
   final String fontFamily;
   final String? localFontFamily;
   final bool isExactSystem;
@@ -25,8 +25,7 @@ class AppThemeData {
 
   String get localFont => localFontFamily ?? fontFamily;
   bool get darkMode => isDarkMode && darkColors != null;
-  ThemeColors get colors =>
-      darkMode ? (darkColors ?? lightColors) : lightColors;
+  AppColors get colors => darkMode ? (darkColors ?? lightColors) : lightColors;
 
   TextTheme newTextThemeOf(Color color, {double i = 0}) {
     return TextTheme(
@@ -168,7 +167,7 @@ class AppThemeData {
   }
 
   ThemeData themeData({
-    required ThemeColors colors,
+    required AppColors colors,
     bool light = true,
     Iterable<ThemeExtension<dynamic>>? extensions,
   }) {
@@ -177,17 +176,17 @@ class AppThemeData {
       extensions: extensions,
       visualDensity: VisualDensity.comfortable,
       fontFamily: fontFamily,
-      primarySwatch: colors.primarySwatch ?? Colors.teal,
+      primarySwatch: colors.swatch ?? Colors.teal,
       primaryColor: colors.primary,
-      primaryColorDark: colors.primaryDark,
-      primaryColorLight: colors.primaryLight,
+      primaryColorDark: colors.primary.dark,
+      primaryColorLight: colors.primary.light,
       // backgroundColor: colors.background,
       cardColor: colors.surface,
       colorScheme: ColorScheme.light(
         brightness: light ? Brightness.light : Brightness.dark,
         primary: colors.primary,
         // onPrimary: primaryColor,
-        secondary: colors.secondary ?? colors.primaryLight,
+        secondary: colors.secondary,
         // onSecondary: primaryColorDark,
         error: colors.error,
         // onError: AppColors.red,
@@ -229,7 +228,7 @@ class AppThemeData {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(colors.primaryLight),
+          backgroundColor: MaterialStateProperty.all(colors.primary.light),
         ),
       ),
       iconTheme: IconThemeData(color: colors.primary),
@@ -267,7 +266,7 @@ class AppThemeData {
   Color get disabledColor => colors.disabled;
   Color get backgroundColor => colors.background;
   Color get scaffoldBackgroundColor => material.scaffoldBackgroundColor;
-  Color get disabledLightColor => colors.disabledLight ?? colors.disabled;
+  Color get disabledLightColor => colors.disabled.light ?? colors.disabled;
   Color get errorColor => colors.error;
   Color get primaryColor05 => colors.primary.withOpacity(.05);
   Color get negativeColor => colors.negative;
@@ -285,9 +284,9 @@ class AppThemeData {
   TextTheme get backgroundTextTheme => textThemeOf(colors.background);
   TextTheme get surfaceTextTheme => textThemeOf(colors.surface);
   TextTheme get primaryTextTheme => textThemeOf(colors.primary);
-  TextTheme get primaryDarkTextTheme => textThemeOf(colors.primaryDark);
+  TextTheme get primaryDarkTextTheme => textThemeOf(colors.primary.dark);
   TextTheme get blackTextTheme => textThemeOf(colors.text);
-  TextTheme get disabledLightTextTheme => textThemeOf(colors.disabledLight);
+  TextTheme get disabledLightTextTheme => textThemeOf(colors.disabled.light);
   TextTheme get whiteSmokeTextTheme => textThemeOf(colors.surface);
   TextTheme get disabledTextTheme => textThemeOf(colors.disabled);
   TextTheme get negativeTextTheme => textThemeOf(negativeColor);
@@ -295,8 +294,8 @@ class AppThemeData {
   TextTheme positiveTextThemeIf(bool b) => textThemeOf(positiveColorIf(b));
   TextTheme get errorTextTheme => textThemeOf(colors.error);
   TextTheme get secondaryTextTheme => textThemeOf(colors.secondary);
-  TextTheme get secondaryDarkTextTheme => textThemeOf(colors.secondaryDark);
-  TextTheme get secondaryLightTextTheme => textThemeOf(colors.secondaryLight);
+  TextTheme get secondaryDarkTextTheme => textThemeOf(colors.secondary.dark);
+  TextTheme get secondaryLightTextTheme => textThemeOf(colors.secondary.light);
 
   Border disabledBorder({double width = 1}) =>
       Border.all(color: colors.disabled, width: width);
@@ -310,8 +309,8 @@ class AppThemeData {
   // TextTheme get whiteTextTheme => textThemeOf(Colors.white);
 
   AppThemeData copyWith({
-    ThemeColors? lightColors,
-    ThemeColors? darkColors,
+    AppColors? lightColors,
+    AppColors? darkColors,
     String? fontFamily,
     String? localFontFamily,
     bool? isExactSystem,

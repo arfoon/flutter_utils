@@ -1,24 +1,34 @@
 import 'package:flutter_utils/flutter_utils.dart';
 
-extension TextStyleUtilsExt on TextStyle {
-  TextStyle get light => copyWith(fontWeight: FontWeight.w200);
-  TextStyle get regular => copyWith(fontWeight: FontWeight.w400);
-  TextStyle get medium => copyWith(fontWeight: FontWeight.w600);
-  TextStyle get bold => copyWith(fontWeight: FontWeight.w800);
-  TextStyle get black => copyWith(fontWeight: FontWeight.w900);
+extension TextStyleUtilsExt on TextStyle? {
+  TextStyle? get thin => this?.copyWith(fontWeight: FontWeight.w100);
+  TextStyle? get extraLight => this?.copyWith(fontWeight: FontWeight.w200);
+  TextStyle? get light => this?.copyWith(fontWeight: FontWeight.w300);
+  TextStyle? get regular => this?.copyWith(fontWeight: FontWeight.w400);
+  TextStyle? get medium => this?.copyWith(fontWeight: FontWeight.w500);
+  TextStyle? get semiBold => this?.copyWith(fontWeight: FontWeight.w600);
+  TextStyle? get bold => this?.copyWith(fontWeight: FontWeight.w700);
+  TextStyle? get extraBold => this?.copyWith(fontWeight: FontWeight.w800);
+  TextStyle? get black => this?.copyWith(fontWeight: FontWeight.w900);
 
   List<TextStyle> get weights => [
+        thin,
+        extraLight,
         light,
         regular,
         medium,
+        semiBold,
         bold,
+        extraBold,
         black,
       ].nonNulls.toList();
 
-  TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
-  TextStyle get underline => copyWith(decoration: TextDecoration.underline);
-  TextStyle get lineThrough => copyWith(decoration: TextDecoration.lineThrough);
+  TextStyle? get italic => this?.copyWith(fontStyle: FontStyle.italic);
+  TextStyle? get underline =>
+      this?.copyWith(decoration: TextDecoration.underline);
+  TextStyle? get lineThrough =>
+      this?.copyWith(decoration: TextDecoration.lineThrough);
 
-  TextStyle plusSize(double? plus) =>
-      copyWith(fontSize: (fontSize ?? 0) + (plus ?? 0));
+  TextStyle? plusSize(double? plus) =>
+      this?.copyWith(fontSize: (this?.fontSize ?? 0) + (plus ?? 0));
 }
