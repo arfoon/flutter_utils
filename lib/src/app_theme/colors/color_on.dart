@@ -39,4 +39,18 @@ class ColorOn extends Color {
 
   @override
   String toString() => 'ColorOn(argb: $argb, on: $on)';
+
+  Map<String, dynamic> toJson() {
+    return {
+      'argb': argb,
+      'on': on,
+    };
+  }
+
+  factory ColorOn.fromJson(Map<String, dynamic> json) {
+    return ColorOn(
+      json['argb'] as int,
+      on: json['on'] as int?,
+    );
+  }
 }

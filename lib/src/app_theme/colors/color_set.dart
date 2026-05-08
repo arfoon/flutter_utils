@@ -58,4 +58,22 @@ class ColorSet extends Color {
 
   @override
   String toString() => 'ColorSet(argb: ${toARGB32()}, on: $on, dark: $dark, light: $light)';
+
+  Map<String, dynamic> toJson() {
+    return {
+      'argb': toARGB32(),
+      'on': on,
+      'dark': dark?.toJson(),
+      'light': light?.toJson(),
+    };
+  }
+
+  factory ColorSet.fromJson(Map<String, dynamic> json) {
+    return ColorSet(
+      json['argb'] as int,
+      on: json['on'] as int?,
+      dark: json['dark'] != null ? ColorOn.fromJson(json['dark'] as Map<String, dynamic>) : null,
+      light: json['light'] != null ? ColorOn.fromJson(json['light'] as Map<String, dynamic>) : null,
+    );
+  }
 }

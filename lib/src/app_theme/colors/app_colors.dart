@@ -150,4 +150,41 @@ class AppColors {
   String toString() {
     return 'AppColors(theme: $theme, primary: $primary, secondary: $secondary, ...)';
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'theme': theme.index,
+      'primary': primary.toJson(),
+      'secondary': secondary.toJson(),
+      'background': background.toJson(),
+      'surface': surface.toJson(),
+      'text': text.toJson(),
+      'divider': divider.toJson(),
+      'disabled': disabled.toJson(),
+      'error': error.toJson(),
+      'negative': negative.toJson(),
+      'positive': positive.toJson(),
+      'warning': warning.toJson(),
+      'ok': ok.toJson(),
+      // MaterialColor swatch is tricky to serialize directly, usually handled separately or ignored
+    };
+  }
+
+  factory AppColors.fromJson(Map<String, dynamic> json) {
+    return AppColors(
+      theme: ThemeMode.values[json['theme'] as int],
+      primary: ColorSet.fromJson(json['primary'] as Map<String, dynamic>),
+      secondary: ColorSet.fromJson(json['secondary'] as Map<String, dynamic>),
+      background: ColorSet.fromJson(json['background'] as Map<String, dynamic>),
+      surface: ColorSet.fromJson(json['surface'] as Map<String, dynamic>),
+      text: ColorSet.fromJson(json['text'] as Map<String, dynamic>),
+      divider: ColorSet.fromJson(json['divider'] as Map<String, dynamic>),
+      disabled: ColorSet.fromJson(json['disabled'] as Map<String, dynamic>),
+      error: ColorSet.fromJson(json['error'] as Map<String, dynamic>),
+      negative: ColorSet.fromJson(json['negative'] as Map<String, dynamic>),
+      positive: ColorSet.fromJson(json['positive'] as Map<String, dynamic>),
+      warning: ColorSet.fromJson(json['warning'] as Map<String, dynamic>),
+      ok: ColorSet.fromJson(json['ok'] as Map<String, dynamic>),
+    );
+  }
 }
