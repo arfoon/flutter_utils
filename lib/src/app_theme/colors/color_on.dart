@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ColorOn extends Color {
   final int argb;
-  final int? on;
+  final Color? on;
   const ColorOn(this.argb, {this.on}) : super(argb);
 
   ColorOn copyWith({
     int? argb,
-    int? on,
+    Color? on,
   }) {
     return ColorOn(
       argb ?? this.argb,
@@ -19,11 +19,7 @@ class ColorOn extends Color {
     if (a == null && b == null) return null;
     return ColorOn(
       Color.lerp(a, b, t)?.toARGB32() ?? 0,
-      on: Color.lerp(
-        a?.on != null ? Color(a!.on!) : null,
-        b?.on != null ? Color(b!.on!) : null,
-        t,
-      )?.toARGB32(),
+      on: Color.lerp(a?.on, b?.on, t),
     );
   }
 
@@ -43,14 +39,14 @@ class ColorOn extends Color {
   Map<String, dynamic> toJson() {
     return {
       'argb': argb,
-      'on': on,
+      'on': on?.toARGB32(),
     };
   }
 
   factory ColorOn.fromJson(Map<String, dynamic> json) {
     return ColorOn(
       json['argb'] as int,
-      on: json['on'] as int?,
+      on: json['on'] != null ? Color(json['on'] as int) : null,
     );
   }
 }

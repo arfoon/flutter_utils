@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_utils/src/app_theme/colors/color_on.dart';
 
 class ColorSet extends Color {
-  final int? on;
+  final Color? on;
   final ColorOn? dark;
   final ColorOn? light;
 
@@ -15,7 +15,7 @@ class ColorSet extends Color {
 
   ColorSet copyWith({
     int? argb,
-    int? on,
+    Color? on,
     ColorOn? dark,
     ColorOn? light,
   }) {
@@ -31,11 +31,7 @@ class ColorSet extends Color {
     if (a == null && b == null) return null;
     return ColorSet(
       Color.lerp(a, b, t)?.toARGB32() ?? 0,
-      on: Color.lerp(
-        a?.on != null ? Color(a!.on!) : null,
-        b?.on != null ? Color(b!.on!) : null,
-        t,
-      )?.toARGB32(),
+      on: Color.lerp(a?.on, b?.on, t),
       dark: ColorOn.lerp(a?.dark, b?.dark, t),
       light: ColorOn.lerp(a?.light, b?.light, t),
     );
@@ -61,7 +57,7 @@ class ColorSet extends Color {
   Map<String, dynamic> toJson() {
     return {
       'argb': toARGB32(),
-      'on': on,
+      'on': on?.toARGB32(),
       'dark': dark?.toJson(),
       'light': light?.toJson(),
     };
@@ -70,7 +66,7 @@ class ColorSet extends Color {
   factory ColorSet.fromJson(Map<String, dynamic> json) {
     return ColorSet(
       json['argb'] as int,
-      on: json['on'] as int?,
+      on: json['on'] != null ? Color(json['on'] as int) : null,
       dark: json['dark'] != null
           ? ColorOn.fromJson(json['dark'] as Map<String, dynamic>)
           : null,
