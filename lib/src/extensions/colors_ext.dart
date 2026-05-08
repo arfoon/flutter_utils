@@ -39,6 +39,6 @@ extension ColorNullableExt on Color? {
               strokeAlign: strokeAlign ?? BorderSide.strokeAlignOutside,
             );
 
-  bool get isDark => (this?.computeLuminance() ?? 0.0) > 0.5;
-  bool get isLight => (this?.computeLuminance() ?? 0.0) < 0.5;
+  bool get isDark => (this?.computeLuminance() ?? 0.0) < 0.5;
+  bool get isLight => (this?.computeLuminance() ?? 0.0) >= 0.5;
 }
