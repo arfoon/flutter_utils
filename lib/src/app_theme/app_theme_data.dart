@@ -59,6 +59,7 @@ class AppThemeData {
     final brightness = light ? Brightness.light : Brightness.dark;
 
     return ThemeData(
+      brightness: brightness,
       useMaterial3: useM3,
       extensions: extensions,
       visualDensity: VisualDensity.comfortable,
@@ -114,8 +115,8 @@ class AppThemeData {
         surfaceTintColor: Colors.transparent,
         elevation: .0,
         centerTitle: false,
-        titleTextStyle: textThemeOf(colors.text).titleMedium,
-        toolbarTextStyle: textThemeOf(colors.text).titleMedium,
+        titleTextStyle: colors.text.title.medium,
+        toolbarTextStyle: colors.text.title.medium,
         iconTheme: IconThemeData(color: colors.primary),
         systemOverlayStyle: SystemUiOverlayStyle(
           systemNavigationBarIconBrightness:
@@ -131,8 +132,8 @@ class AppThemeData {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        titleTextStyle: textThemeOf(colors.text).titleLarge,
-        contentTextStyle: textThemeOf(colors.text).bodyMedium,
+        titleTextStyle: colors.text.title.semiBold,
+        contentTextStyle: colors.text.body.regular,
       ),
       dividerColor: colors.divider,
       dividerTheme: DividerThemeData(
@@ -217,27 +218,23 @@ class AppThemeData {
   }
 
   TextTheme newTextThemeOf(Color color, {double i = 0}) {
+    final sizes = TextSizes.instance;
     return TextTheme(
-      //Label 10
-      labelSmall: TextStyle(fontSize: 12 + i, fontWeight: FontWeight.normal),
-      labelMedium: TextStyle(fontSize: 12 + i, fontWeight: FontWeight.w600),
-      labelLarge: TextStyle(fontSize: 12 + i, fontWeight: FontWeight.bold),
-      //Body : 18
-      bodySmall: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.normal),
-      bodyMedium: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.w600),
-      bodyLarge: TextStyle(fontSize: 14 + i, fontWeight: FontWeight.bold),
-      //Title : 24
-      titleSmall: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.normal),
-      titleMedium: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.w600),
-      titleLarge: TextStyle(fontSize: 18 + i, fontWeight: FontWeight.bold),
-      //Headline 28
-      headlineSmall: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.normal),
-      headlineMedium: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.w600),
-      headlineLarge: TextStyle(fontSize: 24 + i, fontWeight: FontWeight.bold),
-      //Display 36
-      displaySmall: TextStyle(fontSize: 32 + i, fontWeight: FontWeight.normal),
-      displayMedium: TextStyle(fontSize: 32 + i, fontWeight: FontWeight.w600),
-      displayLarge: TextStyle(fontSize: 32 + i, fontWeight: FontWeight.bold),
+      displayLarge: sizes.head.plusSize(i).bold,
+      displayMedium: sizes.display.plusSize(i).semiBold,
+      displaySmall: sizes.display.plusSize(i).regular,
+      headlineLarge: sizes.headline.plusSize(i).bold,
+      headlineMedium: sizes.headline.plusSize(i).semiBold,
+      headlineSmall: sizes.headline.plusSize(i).regular,
+      titleLarge: sizes.title.plusSize(i).bold,
+      titleMedium: sizes.title.plusSize(i).semiBold,
+      titleSmall: sizes.title.plusSize(i).regular,
+      bodyLarge: sizes.subtitle.plusSize(i).regular,
+      bodyMedium: sizes.body.plusSize(i).regular,
+      bodySmall: sizes.label.plusSize(i).regular,
+      labelLarge: sizes.body.plusSize(i).medium,
+      labelMedium: sizes.label.plusSize(i).medium,
+      labelSmall: sizes.caption.plusSize(i).medium,
     ).apply(
       decorationColor: color,
       bodyColor: color,
@@ -284,12 +281,12 @@ class AppThemeData {
         fontWeight: FontWeight.w600,
       ),
       bodyLarge: TextStyle(
-        fontSize: 14 + i,
+        fontSize: 16 + i,
         fontWeight: FontWeight.w400,
       ),
       bodyMedium: TextStyle(
         fontSize: 14 + i,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w400,
       ),
       bodySmall: TextStyle(
         fontSize: 12 + i,

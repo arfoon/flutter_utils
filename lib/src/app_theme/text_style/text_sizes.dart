@@ -14,11 +14,9 @@ class TextSizes {
     head: TextStyle(fontSize: 32),
   );
 
-  static TextSizes init(TextSizes? textSizes) {
+  static void init(TextSizes? textSizes) {
     if (textSizes != null) {
-      return textSizes.withFontFamily(textSizes.fontFamily);
-    } else {
-      return TextSizes.instance;
+      instance = textSizes.withFontFamily(textSizes.fontFamily);
     }
   }
 
