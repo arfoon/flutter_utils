@@ -6,7 +6,9 @@ class TextSizes {
     caption: TextStyle(fontSize: 10),
     label: TextStyle(fontSize: 12),
     body: TextStyle(fontSize: 14),
+    subtitle: TextStyle(fontSize: 16),
     title: TextStyle(fontSize: 18),
+    header: TextStyle(fontSize: 20),
     headline: TextStyle(fontSize: 24),
     display: TextStyle(fontSize: 28),
     head: TextStyle(fontSize: 32),
@@ -26,7 +28,9 @@ class TextSizes {
   final TextStyle caption;
   final TextStyle label;
   final TextStyle body;
+  final TextStyle subtitle;
   final TextStyle title;
+  final TextStyle header;
   final TextStyle headline;
   final TextStyle display;
   final TextStyle head;
@@ -37,7 +41,9 @@ class TextSizes {
     required this.caption,
     required this.label,
     required this.body,
+    required this.subtitle,
     required this.title,
+    required this.header,
     required this.headline,
     required this.display,
     required this.head,
@@ -50,7 +56,9 @@ class TextSizes {
       caption: caption.copyWith(fontFamily: fontFamily),
       label: label.copyWith(fontFamily: fontFamily),
       body: body.copyWith(fontFamily: fontFamily),
+      subtitle: subtitle.copyWith(fontFamily: fontFamily),
       title: title.copyWith(fontFamily: fontFamily),
+      header: header.copyWith(fontFamily: fontFamily),
       headline: headline.copyWith(fontFamily: fontFamily),
       display: display.copyWith(fontFamily: fontFamily),
       head: head.copyWith(fontFamily: fontFamily),

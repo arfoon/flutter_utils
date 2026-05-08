@@ -31,4 +31,6 @@ extension TextStyleUtilsExt on TextStyle? {
 
   TextStyle? plusSize(double? plus) =>
       this?.copyWith(fontSize: (this?.fontSize ?? 0) + (plus ?? 0));
+
+  TextStyle? withColor(Color color) => this?.copyWith(color: color);
 }
