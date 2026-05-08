@@ -38,4 +38,7 @@ extension ColorNullableExt on Color? {
               style: style ?? BorderStyle.solid,
               strokeAlign: strokeAlign ?? BorderSide.strokeAlignOutside,
             );
+
+  bool get isDark => (this?.computeLuminance() ?? 0.0) > 0.5;
+  bool get isLight => (this?.computeLuminance() ?? 0.0) < 0.5;
 }
