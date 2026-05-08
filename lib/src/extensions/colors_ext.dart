@@ -21,19 +21,21 @@ extension ColorUtilsMainExt on Color {
 
     return hslLight.toColor();
   }
-
-  Border border({double width = 1, BorderStyle? style, double? strokeAlign}) =>
-      Border.all(
-        color: this,
-        width: width,
-        style: style ?? BorderStyle.solid,
-        strokeAlign: strokeAlign ?? BorderSide.strokeAlignOutside,
-      );
 }
 
-extension ColorOpacityExt on Color? {
+extension ColorNullableExt on Color? {
   /// Returns a copy of this color with the given opacity (0.0 to 1.0).
   Color? opacityOf(double opacity) {
     return this?.withAlpha((opacity * 255).round());
   }
+
+  Border? border({double width = 1, BorderStyle? style, double? strokeAlign}) =>
+      this == null
+          ? null
+          : Border.all(
+              color: this!,
+              width: width,
+              style: style ?? BorderStyle.solid,
+              strokeAlign: strokeAlign ?? BorderSide.strokeAlignOutside,
+            );
 }
