@@ -40,6 +40,16 @@ class AppColors {
     required this.theme,
   });
 
+  ColorSet value(double? value, {bool isBalance = false}) {
+    value ??= 0;
+    if (value == 0) return disabled;
+    return value < 0 ? negative : (isBalance ? text : positive);
+  }
+
+  ColorSet positiveIf(bool b) => b ? positive : negative;
+  ColorSet negativeIf(bool b) => b ? negative : positive;
+  ColorSet warningIf(bool when) => when ? warning : text;
+
   List<ColorSet> get list => [
         primary,
         secondary,
