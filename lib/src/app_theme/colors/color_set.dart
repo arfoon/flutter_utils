@@ -6,6 +6,8 @@ class ColorSet extends Color {
   final ColorOn? dark;
   final ColorOn? light;
 
+  Color? onIf(bool when) => when ? on : this;
+
   const ColorSet(
     int argb, {
     this.on,
