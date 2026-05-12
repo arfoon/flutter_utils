@@ -37,6 +37,7 @@ class AppButton extends StatelessWidget {
     this.suffixIcon,
     this.suffixIconSize,
     this.localizeLoadingText,
+    this.borderRadius,
   }) : super(key: key);
 
   final VoidCallback? onTap;
@@ -60,6 +61,7 @@ class AppButton extends StatelessWidget {
   final bool expandedText, small;
   final int? rotateIcon;
   final bool? localizeLoadingText;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -100,10 +102,11 @@ class AppButton extends StatelessWidget {
           minWidth: minWidth,
           width: width,
           margin: margin,
-          height: height ?? (kIsMobile ? 54 : 44),
+          height: height ?? context.theme.buttonHeight ?? (kIsMobile ? 54 : 44),
           onPressed: !loading && onTap != null ? onTap! : null,
           color: backgroundColor,
-          borderRadius: Radiuses.miniCircle,
+          borderRadius:
+              borderRadius ?? context.theme.buttonRadius ?? Radiuses.miniCircle,
           border: hover
               ? Border.all(color: color)
               : Border.all(
@@ -111,7 +114,7 @@ class AppButton extends StatelessWidget {
                       ? (borderColor ?? textStyle!.color!)
                       : (color))),
           splashColor:
-              outlined ? null : context.theme.backgroundColor.withOpacity(.1),
+              outlined ? null : context.theme.backgroundColor.opacityOf(.1),
           padding: padding ??
               Spaces.only(
                 vertical: Spaces.tiny,

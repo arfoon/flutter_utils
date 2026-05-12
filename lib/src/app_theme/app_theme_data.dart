@@ -9,6 +9,8 @@ class AppThemeData {
   final bool isDarkMode;
   final bool useMaterial3;
   final TextSizes? textSizes;
+  final BorderRadius? buttonRadius;
+  final double? buttonHeight;
 
   AppThemeData({
     required this.lightColors,
@@ -19,6 +21,8 @@ class AppThemeData {
     this.isDarkMode = false,
     this.useMaterial3 = false,
     this.textSizes,
+    this.buttonRadius,
+    this.buttonHeight,
   }) {
     if (textSizes != null) {
       TextSizes.init(textSizes);
@@ -33,6 +37,9 @@ class AppThemeData {
     bool? isExactSystem,
     bool? isDarkMode,
     bool? useMaterial3,
+    TextSizes? textSizes,
+    BorderRadius? buttonRadius,
+    double? buttonHeight,
   }) {
     return AppThemeData(
       lightColors: lightColors ?? this.lightColors,
@@ -42,6 +49,9 @@ class AppThemeData {
       isExactSystem: isExactSystem ?? this.isExactSystem,
       isDarkMode: isDarkMode ?? this.isDarkMode,
       useMaterial3: useMaterial3 ?? this.useMaterial3,
+      textSizes: textSizes ?? this.textSizes,
+      buttonRadius: buttonRadius ?? this.buttonRadius,
+      buttonHeight: buttonHeight ?? this.buttonHeight,
     );
   }
 
