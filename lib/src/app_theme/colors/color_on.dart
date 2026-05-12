@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class ColorOn extends Color {
   final int argb;
   final Color? on;
+
   const ColorOn(this.argb, {this.on}) : super(argb);
+
+  Color? onIf(bool when) => when ? on : this;
 
   ColorOn copyWith({
     int? argb,
