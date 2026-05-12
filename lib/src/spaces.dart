@@ -1,13 +1,24 @@
 import 'package:flutter_utils/flutter_utils.dart';
 
 class Spaces {
-  static const double xmini = 2;
+  //! Mini 4
   static const double mini = 4;
+  static const double xmini = 2;
+
+  //! Tiny 8
   static const double tiny = 8;
-  static const double tinyMini = tiny + mini;
-  static const double small = 16;
-  static const double smallTiny = small + tiny;
+  static const double tinyMini = tiny + mini; // 12
+
+  //! Small 8
+  static const double small = 16; // 16
+  static const double smallXMini = small + xmini; // 18
+  static const double smallMini = small + mini; // 20
+  static const double smallTiny = small + tiny; // 24
+
+  //! Medium 32
   static const double medium = 32;
+
+  //! Large 48
   static const double large = 48;
   static const double xlarge = 64;
   static const double xxlarge = 128;
@@ -17,6 +28,8 @@ class Spaces {
   static const tinyHeight = SizedBox(height: tiny);
   static const tinyMiniHeight = SizedBox(height: tinyMini);
   static const smallHeight = SizedBox(height: small);
+  static const smallXMiniHeight = SizedBox(height: smallXMini);
+  static const smallMiniHeight = SizedBox(height: smallMini);
   static const smallTinyHeight = SizedBox(height: smallTiny);
   static const mediumHeight = SizedBox(height: medium);
   static const largeHeight = SizedBox(height: large);
@@ -27,9 +40,11 @@ class Spaces {
   static const xminiWidth = SizedBox(width: mini / 2);
   static const tinyWidth = SizedBox(width: tiny);
   static const tinyMiniWidth = SizedBox(width: tinyMini);
-  static const mediumWidth = SizedBox(width: medium);
   static const smallWidth = SizedBox(width: small);
+  static const smallXMiniWidth = SizedBox(width: smallXMini);
+  static const smallMiniWidth = SizedBox(width: smallMini);
   static const smallTinyWidth = SizedBox(width: smallTiny);
+  static const mediumWidth = SizedBox(width: medium);
   static const largeWidth = SizedBox(width: large);
   static const xlargeWidth = SizedBox(width: xlarge);
   static const xxlargeWidth = SizedBox(width: xxlarge);
@@ -39,6 +54,8 @@ class Spaces {
   static const EdgeInsets tinyAll = EdgeInsets.all(tiny);
   static const EdgeInsets tinyMiniAll = EdgeInsets.all(tinyMini);
   static const EdgeInsets smallAll = EdgeInsets.all(small);
+  static const EdgeInsets smallXMiniAll = EdgeInsets.all(smallXMini);
+  static const EdgeInsets smallMiniAll = EdgeInsets.all(smallMini);
   static const EdgeInsets smallTinyAll = EdgeInsets.all(smallTiny);
   static const EdgeInsets mediumAll = EdgeInsets.all(medium);
   static const EdgeInsets largeAll = EdgeInsets.all(large);
@@ -54,6 +71,10 @@ class Spaces {
       EdgeInsets.symmetric(horizontal: tinyMini);
   static const EdgeInsets smallHorizontal =
       EdgeInsets.symmetric(horizontal: small);
+  static const EdgeInsets smallXMiniHorizontal =
+      EdgeInsets.symmetric(horizontal: smallXMini);
+  static const EdgeInsets smallMiniHorizontal =
+      EdgeInsets.symmetric(horizontal: smallMini);
   static const EdgeInsets smallTinyHorizontal =
       EdgeInsets.symmetric(horizontal: smallTiny);
   static const EdgeInsets mediumHorizontal =
@@ -69,6 +90,10 @@ class Spaces {
   static const EdgeInsets tinyMiniVertical =
       EdgeInsets.symmetric(vertical: tinyMini);
   static const EdgeInsets smallVertical = EdgeInsets.symmetric(vertical: small);
+  static const EdgeInsets smallXMiniVertical =
+      EdgeInsets.symmetric(vertical: smallXMini);
+  static const EdgeInsets smallMiniVertical =
+      EdgeInsets.symmetric(vertical: smallMini);
   static const EdgeInsets smallTinyVertical =
       EdgeInsets.symmetric(vertical: smallTiny);
   static const EdgeInsets mediumVertical =
@@ -82,6 +107,9 @@ class Spaces {
   static const EdgeInsets tinyLeft = EdgeInsets.only(left: tiny);
   static const EdgeInsets tinyMiniLeft = EdgeInsets.only(left: tinyMini);
   static const EdgeInsets smallLeft = EdgeInsets.only(left: small);
+  static const EdgeInsets smallXMiniLeft = EdgeInsets.only(left: smallXMini);
+  static const EdgeInsets smallMiniLeft = EdgeInsets.only(left: smallMini);
+  static const EdgeInsets smallTinyLeft = EdgeInsets.only(left: smallTiny);
   static const EdgeInsets mediumLeft = EdgeInsets.only(left: medium);
   static const EdgeInsets largeLeft = EdgeInsets.only(left: large);
   static const EdgeInsets xlargeLeft = EdgeInsets.only(left: xlarge);
@@ -91,6 +119,9 @@ class Spaces {
   static const EdgeInsets tinyRight = EdgeInsets.only(right: tiny);
   static const EdgeInsets tinyMiniRight = EdgeInsets.only(right: tinyMini);
   static const EdgeInsets smallRight = EdgeInsets.only(right: small);
+  static const EdgeInsets smallXMiniRight = EdgeInsets.only(right: smallXMini);
+  static const EdgeInsets smallMiniRight = EdgeInsets.only(right: smallMini);
+  static const EdgeInsets smallTinyRight = EdgeInsets.only(right: smallTiny);
   static const EdgeInsets mediumRight = EdgeInsets.only(right: medium);
   static const EdgeInsets largeRight = EdgeInsets.only(right: large);
   static const EdgeInsets xlargeRight = EdgeInsets.only(right: xlarge);
@@ -100,6 +131,9 @@ class Spaces {
   static EdgeInsets get tinyStart => Spaces.only(start: tiny);
   static EdgeInsets get tinyMiniStart => Spaces.only(start: tinyMini);
   static EdgeInsets get smallStart => Spaces.only(start: small);
+  static EdgeInsets get smallXMiniStart => Spaces.only(start: smallXMini);
+  static EdgeInsets get smallMiniStart => Spaces.only(start: smallMini);
+  static EdgeInsets get smallTinyStart => Spaces.only(start: smallTiny);
   static EdgeInsets get mediumStart => Spaces.only(start: medium);
   static EdgeInsets get largeStart => Spaces.only(start: large);
   static EdgeInsets get xlargeStart => Spaces.only(start: xlarge);
@@ -109,6 +143,9 @@ class Spaces {
   static EdgeInsets get tinyEnd => Spaces.only(end: tiny);
   static EdgeInsets get tinyMiniEnd => Spaces.only(end: tinyMini);
   static EdgeInsets get smallEnd => Spaces.only(end: small);
+  static EdgeInsets get smallXMiniEnd => Spaces.only(end: smallXMini);
+  static EdgeInsets get smallMiniEnd => Spaces.only(end: smallMini);
+  static EdgeInsets get smallTinyEnd => Spaces.only(end: smallTiny);
   static EdgeInsets get mediumEnd => Spaces.only(end: medium);
   static EdgeInsets get largeEnd => Spaces.only(end: large);
   static EdgeInsets get xlargeEnd => Spaces.only(end: xlarge);
@@ -118,6 +155,10 @@ class Spaces {
   static const EdgeInsets tinyBottom = EdgeInsets.only(bottom: tiny);
   static const EdgeInsets tinyMiniBottom = EdgeInsets.only(bottom: tinyMini);
   static const EdgeInsets smallBottom = EdgeInsets.only(bottom: small);
+  static const EdgeInsets smallXMiniBottom =
+      EdgeInsets.only(bottom: smallXMini);
+  static const EdgeInsets smallMiniBottom = EdgeInsets.only(bottom: smallMini);
+  static const EdgeInsets smallTinyBottom = EdgeInsets.only(bottom: smallTiny);
   static const EdgeInsets mediumBottom = EdgeInsets.only(bottom: medium);
   static const EdgeInsets largeBottom = EdgeInsets.only(bottom: large);
   static const EdgeInsets xlargeBottom = EdgeInsets.only(bottom: xlarge);
@@ -127,6 +168,9 @@ class Spaces {
   static const EdgeInsets tinyTop = EdgeInsets.only(top: tiny);
   static const EdgeInsets tinyMiniTop = EdgeInsets.only(top: tinyMini);
   static const EdgeInsets smallTop = EdgeInsets.only(top: small);
+  static const EdgeInsets smallXMiniTop = EdgeInsets.only(top: smallXMini);
+  static const EdgeInsets smallMiniTop = EdgeInsets.only(top: smallMini);
+  static const EdgeInsets smallTinyTop = EdgeInsets.only(top: smallTiny);
   static const EdgeInsets mediumTop = EdgeInsets.only(top: medium);
   static const EdgeInsets largeTop = EdgeInsets.only(top: large);
   static const EdgeInsets xlargeTop = EdgeInsets.only(top: xlarge);
@@ -142,6 +186,10 @@ class Spaces {
     var bottom = MediaQuery.of(context).viewInsets.bottom;
     if (bottom == 0) return null;
     return bottom;
+  }
+
+  static double keyboardHeight(BuildContext context) {
+    return MediaQuery.of(context).viewInsets.bottom;
   }
 
   static EdgeInsets only({
@@ -185,4 +233,18 @@ class Spaces {
     }
     return insets;
   }
+}
+
+extension DoubleSpaceExt on double {
+  SizedBox get height => SizedBox(height: this);
+  SizedBox get width => SizedBox(width: this);
+  EdgeInsets get all => EdgeInsets.all(this);
+  EdgeInsets get horizontal => EdgeInsets.symmetric(horizontal: this);
+  EdgeInsets get vertical => EdgeInsets.symmetric(vertical: this);
+  EdgeInsets get left => EdgeInsets.only(left: this);
+  EdgeInsets get right => EdgeInsets.only(right: this);
+  EdgeInsets get top => EdgeInsets.only(top: this);
+  EdgeInsets get bottom => EdgeInsets.only(bottom: this);
+  EdgeInsets get start => Spaces.only(start: this);
+  EdgeInsets get end => Spaces.only(end: this);
 }
