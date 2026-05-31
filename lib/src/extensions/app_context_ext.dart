@@ -41,6 +41,24 @@ extension AppContextExt on BuildContext {
   bool get en => Locales.currentLocale(this)?.languageCode == 'en';
   TextDirection get textDirection => Directionality.of(this);
 
+  showErrorSnackBar(
+    String title, {
+    String? subtitle,
+    Color? color,
+    SnackBarAction? action,
+    SvgData? icon,
+    double iconSize = 26,
+  }) {
+    showSnackBar(
+      title,
+      color: colors.error,
+      subtitle: subtitle,
+      action: action,
+      icon: icon,
+      iconSize: iconSize,
+    );
+  }
+
   showSnackBar(
     String title, {
     String? subtitle,
@@ -96,4 +114,7 @@ extension AppContextExt on BuildContext {
       ),
     );
   }
+
+  /// Picks a [Color] from [colors]. Use [colors] for direct access.
+  Color pick(Color Function(AppColors c) select) => select(colors);
 }

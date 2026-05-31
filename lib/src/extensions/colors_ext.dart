@@ -41,4 +41,9 @@ extension ColorNullableExt on Color? {
 
   bool get isDark => (this?.computeLuminance() ?? 0.0) < 0.5;
   bool get isLight => (this?.computeLuminance() ?? 0.0) >= 0.5;
+
+  ColorSet? get toSet =>
+      this == null ? null : ColorSet(this!.toARGB32(), on: null);
+
+  Color? when(bool when, Color? color) => when ? color : this;
 }

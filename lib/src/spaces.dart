@@ -2,11 +2,11 @@ import 'package:flutter_utils/flutter_utils.dart';
 
 class Spaces {
   //! Mini 4
-  static const double mini = 4;
-  static const double xmini = 2;
+  static const double mini = 4; //4
+  static const double xmini = 2; //2
 
   //! Tiny 8
-  static const double tiny = 8;
+  static const double tiny = 8; //8
   static const double tinyMini = tiny + mini; // 12
   static const double tinyXMini = tiny + xmini; // 10
 
@@ -17,12 +17,12 @@ class Spaces {
   static const double smallTiny = small + tiny; // 24
 
   //! Medium 32
-  static const double medium = 32;
+  static const double medium = 32; //32
 
   //! Large 48
-  static const double large = 48;
-  static const double xlarge = 64;
-  static const double xxlarge = 128;
+  static const double large = 48; //48
+  static const double xlarge = 64; //64
+  static const double xxlarge = 128; //128
 
   static const miniHeight = SizedBox(height: mini);
   static const xminiHeight = SizedBox(height: mini / 2);
@@ -261,16 +261,16 @@ class Spaces {
   }
 }
 
-extension DoubleSpaceExt on double {
-  SizedBox get height => SizedBox(height: this);
-  SizedBox get width => SizedBox(width: this);
-  EdgeInsets get all => EdgeInsets.all(this);
-  EdgeInsets get horizontal => EdgeInsets.symmetric(horizontal: this);
-  EdgeInsets get vertical => EdgeInsets.symmetric(vertical: this);
-  EdgeInsets get left => EdgeInsets.only(left: this);
-  EdgeInsets get right => EdgeInsets.only(right: this);
-  EdgeInsets get top => EdgeInsets.only(top: this);
-  EdgeInsets get bottom => EdgeInsets.only(bottom: this);
-  EdgeInsets get start => Spaces.only(start: this);
-  EdgeInsets get end => Spaces.only(end: this);
-}
+// extension DoubleSpaceExt on double {
+//   SizedBox get height => SizedBox(height: this);
+//   SizedBox get width => SizedBox(width: this);
+//   EdgeInsets get all => EdgeInsets.all(this);
+//   EdgeInsets get horizontal => EdgeInsets.symmetric(horizontal: this);
+//   EdgeInsets get vertical => EdgeInsets.symmetric(vertical: this);
+//   EdgeInsets get left => EdgeInsets.only(left: this);
+//   EdgeInsets get right => EdgeInsets.only(right: this);
+//   EdgeInsets get top => EdgeInsets.only(top: this);
+//   EdgeInsets get bottom => EdgeInsets.only(bottom: this);
+//   EdgeInsets get start => Spaces.only(start: this);
+//   EdgeInsets get end => Spaces.only(end: this);
+// }

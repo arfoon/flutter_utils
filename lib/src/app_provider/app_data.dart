@@ -17,7 +17,9 @@ class AppData {
   final SvgData closeIcon;
   final AppThemeData theme;
   final ThemeMode? initalMode;
-  final String? assetsPath;
+
+  /// Example: `assetPrefix: 'packages/connect_frontend/',`
+  final String? assetPrefix;
 
   AppData({
     required this.imageHttpHeaders,
@@ -25,7 +27,7 @@ class AppData {
     required this.theme,
     required this.closeIcon,
     this.initalMode,
-    this.assetsPath,
+    this.assetPrefix,
   });
 
   AppData copyWith({
@@ -34,7 +36,7 @@ class AppData {
     SvgData? closeIcon,
     AppThemeData? theme,
     ThemeMode? initalMode,
-    String? assetsPath,
+    String? assetPrefix,
   }) {
     return AppData(
       imageHttpHeaders: imageHttpHeaders ?? this.imageHttpHeaders,
@@ -42,13 +44,13 @@ class AppData {
       closeIcon: closeIcon ?? this.closeIcon,
       theme: theme ?? this.theme,
       initalMode: initalMode ?? this.initalMode,
-      assetsPath: assetsPath ?? this.assetsPath,
+      assetPrefix: assetPrefix ?? this.assetPrefix,
     );
   }
 }
 
 extension AssetPathExt on String {
   String assetPath(BuildContext context) {
-    return (AppData.of(context).assetsPath ?? '') + this;
+    return (AppData.of(context).assetPrefix ?? '') + this;
   }
 }
