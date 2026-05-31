@@ -15,3 +15,9 @@ extension ColorSetExt on ColorSet {
     return context.theme.darkMode ? dark : light;
   }
 }
+
+extension ListColorSetExt on List<ColorSet> {
+  ColorSet? ofKey(String key) {
+    return where((e) => e.key == key).firstOrNull;
+  }
+}

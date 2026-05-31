@@ -23,6 +23,8 @@ class AppColors {
 
   final MaterialColor? swatch;
 
+  final List<ColorSet>? extras;
+
   const AppColors({
     required this.primary,
     required this.background,
@@ -37,6 +39,7 @@ class AppColors {
     required this.ok,
     required this.error,
     this.swatch,
+    this.extras,
     required this.theme,
   });
 
@@ -50,19 +53,23 @@ class AppColors {
   ColorSet negativeIf(bool b) => b ? negative : positive;
   ColorSet warningIf(bool when) => when ? warning : text;
 
+  ColorSet _keyed(ColorSet color, String key) =>
+      color.key == null ? color.copyWith(key: key) : color;
+
   List<ColorSet> get list => [
-        primary,
-        secondary,
-        background,
-        surface,
-        text,
-        divider,
-        disabled,
-        error,
-        negative,
-        positive,
-        warning,
-        ok,
+        _keyed(primary, 'primary'),
+        _keyed(secondary, 'secondary'),
+        _keyed(background, 'background'),
+        _keyed(surface, 'surface'),
+        _keyed(text, 'text'),
+        _keyed(divider, 'divider'),
+        _keyed(disabled, 'disabled'),
+        _keyed(error, 'error'),
+        _keyed(negative, 'negative'),
+        _keyed(positive, 'positive'),
+        _keyed(warning, 'warning'),
+        _keyed(ok, 'ok'),
+        ...?extras,
       ];
 
   AppColors copyWith({
