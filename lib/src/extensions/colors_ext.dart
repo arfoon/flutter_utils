@@ -46,4 +46,7 @@ extension ColorNullableExt on Color? {
       this == null ? null : ColorSet(this!.toARGB32(), on: null);
 
   Color? when(bool when, Color? color) => when ? color : this;
+
+  ColorOn? toOn([Color? on]) =>
+      this == null ? null : ColorOn(this!.toARGB32(), on: on);
 }

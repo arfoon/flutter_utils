@@ -9,6 +9,8 @@ class ColorSet extends Color {
 
   Color? onIf(bool when) => when ? on : this;
 
+  ColorOn get toColorOn => ColorOn(super.toARGB32(), on: on);
+
   const ColorSet(
     int argb, {
     this.on,
