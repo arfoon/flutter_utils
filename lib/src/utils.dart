@@ -12,6 +12,8 @@ export 'app_provider/app_data_provider.dart';
 
 export 'app_theme/theme.dart';
 
+export 'data/data.dart';
+
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 

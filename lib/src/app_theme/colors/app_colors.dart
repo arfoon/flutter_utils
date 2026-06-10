@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_utils/src/app_theme/colors/colors.dart';
+import 'package:flutter_utils/src/extensions/extensions.dart';
 
 class AppColors {
   final ThemeMode theme;
@@ -203,5 +204,19 @@ class AppColors {
       warning: ColorSet.fromJson(json['warning'] as Map<String, dynamic>),
       ok: ColorSet.fromJson(json['ok'] as Map<String, dynamic>),
     );
+  }
+
+  ColorSet forId(int? id) {
+    var list = extras ??
+        (this
+            .list
+            .where((e) => !['background', 'surface', 'divider'].contains(e.key))
+            .toList());
+    return list.forId(id) ?? primary;
+  }
+
+  ColorSet ofKey(String? key) {
+    if (key == null) return primary;
+    return list.ofKey(key) ?? primary;
   }
 }

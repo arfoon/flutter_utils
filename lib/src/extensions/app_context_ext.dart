@@ -116,5 +116,5 @@ extension AppContextExt on BuildContext {
   }
 
   /// Picks a [Color] from [colors]. Use [colors] for direct access.
-  Color pick(Color Function(AppColors c) select) => select(colors);
+  Color pick(Color Function(AppColors c) c) => c(colors);
 }

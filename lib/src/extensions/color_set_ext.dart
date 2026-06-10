@@ -20,4 +20,19 @@ extension ListColorSetExt on List<ColorSet> {
   ColorSet? ofKey(String key) {
     return where((e) => e.key == key).firstOrNull;
   }
+
+  ColorSet? forId(int? id) {
+    if (id == null) return null;
+
+    var list = this;
+
+    if (list.isEmpty) return null;
+    if (list.length == 1) return list.first;
+
+    while (id! > list.length - 1) {
+      id = (id / 2).toInt();
+    }
+
+    return list[id];
+  }
 }

@@ -21,6 +21,8 @@ class AppData {
   /// Example: `assetPrefix: 'packages/connect_frontend/',`
   final String? assetPrefix;
 
+  final String Function(BuildContext context, Object error)? localizeError;
+
   AppData({
     required this.imageHttpHeaders,
     required this.defaultImage,
@@ -28,6 +30,7 @@ class AppData {
     required this.closeIcon,
     this.initalMode,
     this.assetPrefix,
+    this.localizeError,
   });
 
   AppData copyWith({
@@ -37,6 +40,7 @@ class AppData {
     AppThemeData? theme,
     ThemeMode? initalMode,
     String? assetPrefix,
+    String Function(BuildContext context, Object error)? localizeError,
   }) {
     return AppData(
       imageHttpHeaders: imageHttpHeaders ?? this.imageHttpHeaders,
@@ -45,6 +49,7 @@ class AppData {
       theme: theme ?? this.theme,
       initalMode: initalMode ?? this.initalMode,
       assetPrefix: assetPrefix ?? this.assetPrefix,
+      localizeError: localizeError ?? this.localizeError,
     );
   }
 }
