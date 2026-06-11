@@ -12,6 +12,8 @@ class AppThemeData {
   final BorderRadius? buttonRadius;
   final double? buttonHeight;
 
+  final Brightness? brightness;
+
   AppThemeData({
     required this.lightColors,
     required this.darkColors,
@@ -23,6 +25,7 @@ class AppThemeData {
     this.textSizes,
     this.buttonRadius,
     this.buttonHeight,
+    this.brightness,
   }) {
     if (textSizes != null) {
       TextSizes.init(textSizes);
@@ -40,6 +43,7 @@ class AppThemeData {
     TextSizes? textSizes,
     BorderRadius? buttonRadius,
     double? buttonHeight,
+    Brightness? brightness,
   }) {
     return AppThemeData(
       lightColors: lightColors ?? this.lightColors,
@@ -52,12 +56,30 @@ class AppThemeData {
       textSizes: textSizes ?? this.textSizes,
       buttonRadius: buttonRadius ?? this.buttonRadius,
       buttonHeight: buttonHeight ?? this.buttonHeight,
+      brightness: brightness ?? this.brightness,
     );
   }
 
   String get localFont => localFontFamily ?? fontFamily;
   bool get darkMode => isDarkMode;
   AppColors get colors => darkMode ? (darkColors ?? lightColors) : lightColors;
+
+  /// Status bar and home-indicator icon style for the active theme.
+  ///
+  /// Set [brightness] to override when the scaffold background does not match
+  /// light/dark mode (e.g. a dark hero screen in light mode).
+  SystemUiOverlayStyle get systemOverlayStyle =>
+      systemOverlayStyleFor(effectiveOverlayBrightness(isLightTheme: !darkMode));
+
+  Brightness effectiveOverlayBrightness({required bool isLightTheme}) =>
+      brightness ?? (isLightTheme ? Brightness.light : Brightness.dark);
+
+  SystemUiOverlayStyle systemOverlayStyleFor(Brightness effectiveBrightness) {
+    final overlay = effectiveBrightness == Brightness.dark
+        ? SystemUiOverlayStyle.light
+        : SystemUiOverlayStyle.dark;
+    return overlay.copyWith(statusBarColor: Colors.transparent);
+  }
 
   ThemeData themeData({
     required AppColors colors,
@@ -67,6 +89,11 @@ class AppThemeData {
   }) {
     final useM3 = useMaterial3 ?? this.useMaterial3;
     final brightness = light ? Brightness.light : Brightness.dark;
+    final overlayStyle =
+        systemOverlayStyleFor(effectiveOverlayBrightness(isLightTheme: light));
+    final buttonShape = RoundedRectangleBorder(
+      borderRadius: buttonRadius ?? BorderRadius.circular(8),
+    );
 
     return ThemeData(
       brightness: brightness,
@@ -128,13 +155,7 @@ class AppThemeData {
         titleTextStyle: colors.text.title.medium,
         toolbarTextStyle: colors.text.title.medium,
         iconTheme: IconThemeData(color: colors.primary),
-        systemOverlayStyle: SystemUiOverlayStyle(
-          systemNavigationBarIconBrightness:
-              light ? Brightness.dark : Brightness.light,
-          statusBarIconBrightness: light ? Brightness.dark : Brightness.light,
-          statusBarBrightness: light ? Brightness.light : Brightness.dark,
-          statusBarColor: Colors.transparent,
-        ),
+        systemOverlayStyle: overlayStyle,
       ),
       dialogTheme: DialogThemeData(
         backgroundColor: colors.surface,
@@ -160,26 +181,20 @@ class AppThemeData {
           disabledBackgroundColor: colors.disabled,
           disabledForegroundColor: colors.disabled.on,
           elevation: useM3 ? null : 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: buttonShape,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: colors.primary,
           side: BorderSide(color: colors.primary),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: buttonShape,
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: colors.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: buttonShape,
         ),
       ),
       cardTheme: CardThemeData(
