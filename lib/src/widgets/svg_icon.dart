@@ -34,7 +34,7 @@ class SvgIcon extends StatelessWidget {
       svg.path.assetPath(context),
       width: width ?? size,
       height: height ?? size,
-      color: color ?? IconTheme.of(context).color,
+      color: useDefaultColor ? null : (color ?? IconTheme.of(context).color),
     );
 
     if (rotate != null) {
