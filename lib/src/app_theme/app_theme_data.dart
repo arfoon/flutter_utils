@@ -68,8 +68,8 @@ class AppThemeData {
   ///
   /// Set [brightness] to override when the scaffold background does not match
   /// light/dark mode (e.g. a dark hero screen in light mode).
-  SystemUiOverlayStyle get systemOverlayStyle =>
-      systemOverlayStyleFor(effectiveOverlayBrightness(isLightTheme: !darkMode));
+  SystemUiOverlayStyle get systemOverlayStyle => systemOverlayStyleFor(
+      effectiveOverlayBrightness(isLightTheme: !darkMode));
 
   Brightness effectiveOverlayBrightness({required bool isLightTheme}) =>
       brightness ?? (isLightTheme ? Brightness.light : Brightness.dark);
@@ -78,7 +78,17 @@ class AppThemeData {
     final overlay = effectiveBrightness == Brightness.dark
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark;
-    return overlay.copyWith(statusBarColor: Colors.transparent);
+    final navBarIconBrightness = effectiveBrightness == Brightness.dark
+        ? Brightness.light
+        : Brightness.dark;
+    return overlay.copyWith(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: navBarIconBrightness,
+      systemStatusBarContrastEnforced: false,
+      systemNavigationBarContrastEnforced: false,
+    );
   }
 
   ThemeData themeData({
