@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_utils/src/app_theme/colors/color_on.dart';
 
-class ColorSet extends Color {
+class ColorSet extends ColorOn {
   final String? key;
-  final Color? on;
   final ColorOn? dark;
   final ColorOn? light;
 
-  Color? onIf(bool when) => when ? on : this;
-
-  ColorOn get toColorOn => ColorOn(super.toARGB32(), on: on);
-
   const ColorSet(
     int argb, {
-    this.on,
+    super.on,
     this.dark,
     this.light,
     this.key,
   }) : super(argb);
 
+  @override
   ColorSet copyWith({
     int? argb,
     Color? on,
@@ -27,7 +23,7 @@ class ColorSet extends Color {
     String? key,
   }) {
     return ColorSet(
-      argb ?? toARGB32(),
+      argb ?? this.argb,
       on: on ?? this.on,
       dark: dark ?? this.dark,
       light: light ?? this.light,
@@ -50,7 +46,7 @@ class ColorSet extends Color {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! ColorSet) return false;
-    return toARGB32() == other.toARGB32() &&
+    return argb == other.argb &&
         key == other.key &&
         on == other.on &&
         dark == other.dark &&
@@ -58,16 +54,17 @@ class ColorSet extends Color {
   }
 
   @override
-  int get hashCode => Object.hash(toARGB32(), key, on, dark, light);
+  int get hashCode => Object.hash(argb, key, on, dark, light);
 
   @override
   String toString() =>
-      'ColorSet(key: $key, argb: ${toARGB32()}, on: $on, dark: $dark, light: $light)';
+      'ColorSet(key: $key, argb: $argb, on: $on, dark: $dark, light: $light)';
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       if (key != null) 'key': key,
-      'argb': toARGB32(),
+      'argb': argb,
       'on': on?.toARGB32(),
       'dark': dark?.toJson(),
       'light': light?.toJson(),
