@@ -21,6 +21,7 @@ class AppImage extends StatelessWidget {
     this.onTap,
     this.heroTag,
     this.asset,
+    this.onLongPress,
   }) : super(key: key);
   final String? url;
   final String? asset;
@@ -36,6 +37,7 @@ class AppImage extends StatelessWidget {
   final Widget? emptyWidget;
   final EdgeInsets? margin;
   final Function? onTap;
+  final VoidCallback? onLongPress;
   final String? heroTag;
 
   @override
@@ -79,6 +81,7 @@ class AppImage extends StatelessWidget {
 
     child = AppCard(
       onTap: onTap,
+      onLongPress: onLongPress,
       width: width,
       height: height,
       border: border,

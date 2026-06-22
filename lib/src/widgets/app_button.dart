@@ -38,6 +38,7 @@ class AppButton extends StatelessWidget {
     this.suffixIconSize,
     this.localizeLoadingText,
     this.borderRadius,
+    this.onLongPress,
   }) : super(key: key);
 
   final VoidCallback? onTap;
@@ -62,6 +63,7 @@ class AppButton extends StatelessWidget {
   final int? rotateIcon;
   final bool? localizeLoadingText;
   final BorderRadius? borderRadius;
+  final VoidCallback? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +101,7 @@ class AppButton extends StatelessWidget {
           }
         }
         return AppCard(
+          onLongPress: onLongPress,
           minWidth: minWidth,
           width: width,
           margin: margin,

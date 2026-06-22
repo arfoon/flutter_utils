@@ -10,7 +10,7 @@ class Spaces {
   static const double tinyMini = tiny + mini; // 12
   static const double tinyXMini = tiny + xmini; // 10
 
-  //! Small 8
+  //! Small 16
   static const double small = 16; // 16
   static const double smallXMini = small + xmini; // 18
   static const double smallMini = small + mini; // 20

@@ -118,6 +118,7 @@ class AppCard extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
             focusColor: primaryColor.withOpacity(.1),
             onTap: () {
               onPressed?.call();
@@ -144,8 +145,7 @@ class AppCard extends StatelessWidget {
       );
     }
 
-    if ((onTap != null || onPressed != null || onLongPress != null) &&
-        kIsDesktop) {
+    if ((onTap != null || onPressed != null || onLongPress != null)) {
       card = MouseRegion(
         cursor: SystemMouseCursors.click,
         child: card,

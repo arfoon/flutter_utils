@@ -7,6 +7,7 @@ class SelectText extends StatelessWidget {
   final TextStyle? selectStyle;
   final TextAlign textAlign;
   final bool caseSensitive;
+  final TextDirection? textDirection;
 
   const SelectText({
     super.key,
@@ -16,6 +17,7 @@ class SelectText extends StatelessWidget {
     this.selectStyle,
     this.textAlign = TextAlign.start,
     this.caseSensitive = true,
+    this.textDirection,
   });
 
   @override
@@ -25,7 +27,12 @@ class SelectText extends StatelessWidget {
         selectStyle ?? baseStyle.copyWith(fontWeight: FontWeight.w600);
 
     if (selects.isEmpty) {
-      return Text(text, style: baseStyle, textAlign: textAlign);
+      return Text(
+        text,
+        style: baseStyle,
+        textAlign: textAlign,
+        textDirection: textDirection,
+      );
     }
 
     // Build a single RegExp that matches any of the bold words.
@@ -59,6 +66,7 @@ class SelectText extends StatelessWidget {
 
     return RichText(
       textAlign: textAlign,
+      textDirection: textDirection,
       text: TextSpan(style: baseStyle, children: spans),
     );
   }
