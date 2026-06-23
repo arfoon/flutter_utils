@@ -308,25 +308,19 @@ class Radiuses {
 extension BorderRadiusExt on BorderRadius {
   RoundedRectangleBorder roundedRectangleBorder({
     BorderSide side = BorderSide.none,
-  }) =>
-      RoundedRectangleBorder(
-        side: side,
-        borderRadius: this,
-      );
+  }) {
+    return RoundedRectangleBorder(side: side, borderRadius: this);
+  }
 
   ContinuousRectangleBorder continuousRectangleBorder({
     BorderSide side = BorderSide.none,
-  }) =>
-      ContinuousRectangleBorder(
-        side: side,
-        borderRadius: this,
-      );
+  }) {
+    return ContinuousRectangleBorder(side: side, borderRadius: this);
+  }
 
   BeveledRectangleBorder beveledRectangleBorder({
     BorderSide side = BorderSide.none,
-  }) =>
-      BeveledRectangleBorder(
-        side: side,
-        borderRadius: this,
-      );
+  }) {
+    return BeveledRectangleBorder(side: side, borderRadius: this);
+  }
 }

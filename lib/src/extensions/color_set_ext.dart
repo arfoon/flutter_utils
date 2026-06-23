@@ -23,6 +23,7 @@ extension ListColorSetExt on List<ColorSet> {
 
   ColorSet? forId(int? id) {
     if (id == null) return null;
+    if (id.isNegative) id = id.abs();
 
     var list = this;
 
