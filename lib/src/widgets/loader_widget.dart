@@ -6,6 +6,9 @@ class LoaderWidget<T> extends StatefulWidget {
   final Function(T value)? onSuccess;
   final Function(Object error, StackTrace stackTrace)? onError;
   final bool barrierDismissible;
+  final Widget Function(
+      Object error, StackTrace stackTrace, VoidCallback onRetry)? errorBuilder;
+  final Color? color;
 
   const LoaderWidget({
     super.key,
@@ -14,6 +17,8 @@ class LoaderWidget<T> extends StatefulWidget {
     this.onSuccess,
     this.onError,
     this.barrierDismissible = true,
+    this.errorBuilder,
+    this.color,
   });
 
   Future<T?> show(BuildContext context) {
@@ -29,7 +34,10 @@ class LoaderWidget<T> extends StatefulWidget {
 }
 
 class _LoaderWidgetState<T> extends State<LoaderWidget<T>> {
-  void _init() async {
+  Object? _error;
+  StackTrace? _stackTrace;
+
+  void _call() async {
     if (widget.load != null) {
       try {
         final value = await widget.load?.call();
@@ -41,12 +49,21 @@ class _LoaderWidgetState<T> extends State<LoaderWidget<T>> {
           }
         }
       } catch (e, s) {
+        if (widget.errorBuilder != null) {
+          setState(() {
+            _error = e;
+            _stackTrace = s;
+          });
+          return;
+        }
+
         widget.onError?.call(e, s);
         if (mounted && widget.onError == null) {
           context.showErrorSnackBar(
             AppData.of(context).localizeError?.call(context, e) ?? e.toString(),
           );
         }
+
         if (mounted) {
           context.popIfCan();
         }
@@ -56,16 +73,19 @@ class _LoaderWidgetState<T> extends State<LoaderWidget<T>> {
 
   @override
   void initState() {
-    _init();
+    _call();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const CenterDialog(
+    if (_error != null && widget.errorBuilder != null) {
+      return widget.errorBuilder!(_error!, _stackTrace!, _call);
+    }
+    return CenterDialog(
       width: 100,
       height: 100,
-      child: LoadingWidget(),
+      child: LoadingWidget(color: widget.color),
     );
   }
 }
